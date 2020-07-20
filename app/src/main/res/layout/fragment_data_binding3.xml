@@ -36,21 +36,25 @@
 
         <variable
             name="user"
-            type="com.yi.jetpackDemo.viewModels.User" />
+            type="com.yi.jetpackDemo.bind.viewModels.User" />
 
         <variable
             name="user2"
-            type="com.yi.jetpackDemo.viewModels.User2" />
+            type="com.yi.jetpackDemo.bind.viewModels.User2" />
 
         <variable
             name="handlers"
-            type="com.yi.jetpackDemo.viewModels.MyHandlers" />
+            type="com.yi.jetpackDemo.bind.viewModels.MyHandlers" />
+
+        <variable
+            name="bindAdapter"
+            type="com.yi.jetpackDemo.bind.viewModels.BindAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".DataBindFragment">
+        tools:context=".bind.DataBindingFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,7 +64,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{handlers::onClickFriend}"
+                android:onClick="@{handlers::onClickFirstName}"
                 android:text="@{user.firstName}"
                 android:textSize="16sp" />
 
@@ -97,7 +101,6 @@
                 android:id="@+id/tv_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{(view)->handlers.onAgeClick(view, user2)}"
                 android:text="@{String.valueOf(user2.age)}"
                 android:textSize="16sp" />
 
@@ -106,6 +109,18 @@
                 android:layout_height="wrap_content"
                 android:text="@{user2.address}"
                 android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_current_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="long long ago"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                imageUrl="@{}"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

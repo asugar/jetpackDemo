@@ -3,18 +3,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/ViewBindingFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.yi.jetpackDemo.DataBindFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_data_bind">
+        android:id="@+id/ViewBindingFragment"
+        android:name="com.yi.jetpackDemo.bind.ViewBindingFragment"
+        android:label="ViewBindingFragment"
+        tools:layout="@layout/fragment_view_binding">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/toDataBindingFragment"
+            app:destination="@id/DataBindingFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/DataBindingFragment"
+        android:name="com.yi.jetpackDemo.bind.DataBindingFragment"
+        android:label="DataBindingFragment"
+        tools:layout="@layout/fragment_data_binding">
+
+        <action
+            android:id="@+id/toDataBindingFragment2"
+            app:destination="@id/DataBindingFragment2" />
+
+        <action
+            android:id="@+id/toViewBindingFragment"
+            app:destination="@id/ViewBindingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DataBindingFragment2"
+        android:name="com.yi.jetpackDemo.bind.DataBindingFragment2"
+        android:label="DataBindingFragment2"
+        tools:layout="@layout/fragment_data_binding2">
+
+        <action
+            android:id="@+id/toDataBindingFragment3"
+            app:destination="@id/toDataBindingFragment3" />
+
+        <action
+            android:id="@+id/toDataBindingFragment2"
+            app:destination="@id/toDataBindingFragment3" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DataBindingFragment3"
+        android:name="com.yi.jetpackDemo.bind.DataBindingFragment3"
+        android:label="DataBindingFragment3"
+        tools:layout="@layout/fragment_data_binding3">
+        <action
+            android:id="@+id/toViewBindingFragment"
+            app:destination="@id/ViewBindingFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.yi.jetpackDemo.SecondFragment"
@@ -22,7 +63,7 @@
         tools:layout="@layout/fragment_second">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/toViewBindingFragment"
+            app:destination="@id/ViewBindingFragment" />
     </fragment>
 </navigation>

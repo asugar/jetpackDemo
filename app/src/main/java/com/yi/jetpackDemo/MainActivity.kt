@@ -9,21 +9,8 @@ import android.view.MenuItem
 
 class MainActivity : AppCompatActivity() {
 
-//    private var binding: ActivityMainBinding? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        /**
-         * 简单视图绑定，通过再build.gradle 中添加
-         * viewBinding {
-         *   enabled = true
-         *  }
-         *  优势：更快的编译速度；易于使用
-         *  缺陷：不支持布局变量或者布局表达式；不支持双向数据绑定
-         */
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(binding?.root)
 
         setContentView(R.layout.activity_main)
 
@@ -33,7 +20,6 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-
 
     }
 
@@ -55,6 +41,5 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-//        binding = null
     }
 }

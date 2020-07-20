@@ -1,10 +1,12 @@
-package com.yi.jetpackDemo.viewModels
+package com.yi.jetpackDemo.bind.viewModels
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.yi.jetpackDemo.BR
-import java.util.*
 
+/**
+ * 可观察对象 BaseObservable
+ */
 class User2 : BaseObservable() {
 
     @get:Bindable

@@ -1,4 +1,4 @@
-package com.yi.jetpackDemo.viewModels
+package com.yi.jetpackDemo.bind.viewModels
 
 import androidx.databinding.ObservableField
 
