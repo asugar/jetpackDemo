@@ -39,11 +39,11 @@
 
         <action
             android:id="@+id/toDataBindingFragment3"
-            app:destination="@id/toDataBindingFragment3" />
+            app:destination="@id/DataBindingFragment3" />
 
         <action
-            android:id="@+id/toDataBindingFragment2"
-            app:destination="@id/toDataBindingFragment3" />
+            android:id="@+id/toDataBindingFragment"
+            app:destination="@id/DataBindingFragment" />
     </fragment>
 
     <fragment

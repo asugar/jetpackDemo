@@ -8,39 +8,9 @@
 
         <import type="android.view.View" />
 
-        <import type="android.util.SparseArray" />
-
-        <import type="java.util.Map" />
-
-        <import type="java.util.List" />
-
-        <variable
-            name="list"
-            type="List&lt;String>" />
-
-        <variable
-            name="sparse"
-            type="SparseArray&lt;String>" />
-
-        <variable
-            name="map"
-            type="Map&lt;String, String>" />
-
-        <variable
-            name="index"
-            type="int" />
-
-        <variable
-            name="key"
-            type="String" />
-
         <variable
             name="user"
-            type="com.yi.jetpackDemo.bind.viewModels.User" />
-
-        <variable
-            name="user2"
-            type="com.yi.jetpackDemo.bind.viewModels.User2" />
+            type="com.yi.jetpackDemo.bind.viewModels.UserViewModel" />
 
         <variable
             name="handlers"
@@ -56,83 +26,58 @@
         android:layout_height="match_parent"
         tools:context=".bind.DataBindingFragment">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{handlers::onClickFirstName}"
-                android:text="@{user.firstName}"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_last_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{(view)-> handlers.onSaveClick(view, key)}"
-                android:text="@{user.lastName}"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="20dp"
-                android:text="@{list[index]}" />
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="@{sparse[index]}" />
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="20dp"
-                android:text="@{map[key]}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{user2.name}"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{String.valueOf(user2.age)}"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{user2.address}"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv_current_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="long long ago"
-                android:textSize="16sp" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                imageUrl="@{}"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
         <TextView
-            android:id="@+id/textview_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hello_first_fragment"
-            app:layout_constraintBottom_toTopOf="@id/button_first"
+            android:text="liveData"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/llContent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/llContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{user.name}"
+                android:textSize="16sp"
+                tools:text="name" />
+
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> handlers.onClickLiveDataName(view,user)}"
+                android:text="@{String.valueOf(user.age)}"
+                android:textSize="16sp"
+                tools:text="age" />
+
+            <CheckBox
+                android:id="@+id/rememberMeCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={user.isChecked}" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                imageUrl="@{}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/button_first"
@@ -142,6 +87,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_first" />
+            app:layout_constraintTop_toBottomOf="@id/llContent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

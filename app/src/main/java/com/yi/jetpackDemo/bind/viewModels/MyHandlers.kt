@@ -42,4 +42,16 @@ class MyHandlers {
         Log.d("xiaoyi", "onSaveClick $key")
 //        user.lastName.set("hello world")
     }
+
+    fun onClickLiveDataName(view: View, user: UserViewModel) {
+        Log.d("xiaoyi", "onClickLiveDataName isChecked= ${user.isChecked.value}")
+        val age: Int? = user.age.value
+        user.age.value = age?.plus(1) ?: 0
+        if (user.name.value.equals("hello")) {
+            user.name.value = "world"
+        } else {
+            user.name.value = "hello"
+        }
+
+    }
 }

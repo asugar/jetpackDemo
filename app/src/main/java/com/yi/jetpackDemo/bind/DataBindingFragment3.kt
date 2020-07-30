@@ -1,7 +1,6 @@
 package com.yi.jetpackDemo.bind
 
 import android.os.Bundle
-import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,14 +22,8 @@ import com.yi.jetpackDemo.bind.viewModels.*
  */
 class DataBindingFragment3 : Fragment() {
 
-    // liveData
-    private val model: NameViewModel by viewModels()
-
-    private val mUser by lazy {
-        User(ObservableField("hello"), ObservableField("world"))
-    }
-    private val mUser2 = User2()
-
+    // viewModule+liveData
+    private val userModule: UserViewModel by viewModels()
     private val shareModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -47,41 +40,32 @@ class DataBindingFragment3 : Fragment() {
                 false
             )
 
-//        binding.user = mUser
-        binding.index = 0
-        binding.key = "1"
-        binding.list = arrayListOf("0", "1", "2")
-        binding.map = mapOf("0" to "hello", "1" to "world", "2" to "beijing")
-        val apareArray: SparseArray<String> = SparseArray(3)
-        apareArray.put(0, "123")
-        apareArray.put(1, "nihao")
-        apareArray.put(2, "beijing")
-        binding.sparse = apareArray
+
 
         binding.handlers = MyHandlers()
+        userModule.name.value = "hello"
+        userModule.age.value = 100
+        binding.user = userModule
 
-        mUser2.name = "beijing"
-        mUser2.address = "changping"
-        mUser2.age = 10
-//        binding.user2 = mUser2
 
         // Create the observer which updates the UI.
         val nameObserver = Observer<String> { newName ->
             // Update the UI, in this case, a TextView.
-            binding.tvCurrentName.text = newName
+            binding.tvName.text = newName
         }
 
         // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
-        model.currentName.observe(viewLifecycleOwner, nameObserver)
+        userModule.name.observe(viewLifecycleOwner, nameObserver)
 
-        binding.tvCurrentName.setOnClickListener {
-            if (binding.tvCurrentName.text.equals("long long ago")) {
-                model.currentName.value = "xiaoyi"
+        binding.tvName.setOnClickListener {
+            if (binding.tvName.text.equals("hello")) {
+                userModule.name.value = "world"
             } else {
-                model.currentName.value = "long long ago"
+                userModule.name.value = "hello"
             }
 
         }
+        binding.lifecycleOwner = this
         return binding.root
 //        return inflater.inflate(R.layout.fragment_data_binding, container, false)
     }
