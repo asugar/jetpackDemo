@@ -7,30 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.yi.jetpackDemo.bind.viewModels.SharedViewModel
 
 /**
- * A simple [Fragment] subclass as the second destination in the navigation.
+ * mainFragment 导航入口
  */
-class SecondFragment : Fragment() {
-
-    private val shareModel: SharedViewModel by activityViewModels()
+class MainFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false)
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_second).setOnClickListener {
+        view.findViewById<Button>(R.id.btnToBinding).setOnClickListener {
             findNavController().navigate(R.id.toViewBindingFragment)
+        }
+
+        view.findViewById<Button>(R.id.btnToWorkManager).setOnClickListener {
+            findNavController().navigate(R.id.toWorkManagerFragment)
         }
     }
 }

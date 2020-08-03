@@ -37,9 +37,14 @@ class ViewBindingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.tvName?.text = "hello world"
         binding?.tvAge?.text = "2020"
-        binding?.btSubmit?.setOnClickListener {
+        binding?.btnNext?.setOnClickListener {
 //            showSnackBar("this is submit")
             findNavController().navigate(R.id.toDataBindingFragment)
+        }
+
+        binding?.btnBack?.setOnClickListener {
+//            showSnackBar("this is submit")
+            findNavController().navigate(R.id.toMainFragment)
         }
     }
 

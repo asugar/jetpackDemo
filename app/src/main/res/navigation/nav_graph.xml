@@ -3,8 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/ViewBindingFragment">
+    app:startDestination="@id/MainFragment">
 
+    <fragment
+        android:id="@+id/MainFragment"
+        android:name="com.yi.jetpackDemo.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/toViewBindingFragment"
+            app:destination="@id/ViewBindingFragment" />
+
+        <action
+            android:id="@+id/toWorkManagerFragment"
+            app:destination="@id/WorkManagerFragment" />
+    </fragment>
+    <!--work manager begin-->
+    <fragment
+        android:id="@+id/WorkManagerFragment"
+        android:name="com.yi.jetpackDemo.workManager.WorkManagerFragment"
+        android:label="WorkManagerFragment"
+        tools:layout="@layout/fragment_work_manager">
+
+    </fragment>
+    <!--work manager end-->
+
+    <!--binding begin-->
     <fragment
         android:id="@+id/ViewBindingFragment"
         android:name="com.yi.jetpackDemo.bind.ViewBindingFragment"
@@ -14,6 +39,10 @@
         <action
             android:id="@+id/toDataBindingFragment"
             app:destination="@id/DataBindingFragment" />
+
+        <action
+            android:id="@+id/toMainFragment"
+            app:destination="@id/MainFragment" />
     </fragment>
 
     <fragment
@@ -57,17 +86,8 @@
 
         <action
             android:id="@+id/toViewBindingFragment"
-            app:destination="@id/ViewBindingFragment" />
+            app:destination="@id/MainFragment" />
     </fragment>
+    <!--binding end-->
 
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.yi.jetpackDemo.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/toViewBindingFragment"
-            app:destination="@id/ViewBindingFragment" />
-    </fragment>
 </navigation>

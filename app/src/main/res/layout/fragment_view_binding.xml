@@ -44,10 +44,16 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btSubmit"
+            android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="提交" />
+            android:text="next" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="back" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
