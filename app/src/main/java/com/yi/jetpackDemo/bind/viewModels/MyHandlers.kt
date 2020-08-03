@@ -34,7 +34,6 @@ class MyHandlers {
         } else {
             scores[scores.size.toString()] = scores.size.toString()
         }
-
     }
 
     fun onSaveClick(view: View, key: String) {
@@ -52,6 +51,12 @@ class MyHandlers {
         } else {
             user.name.value = "hello"
         }
+
+    }
+
+    fun onClickCountDown(view: View, share: SharedViewModel) {
+        val value: Int? = share.countDown.value
+        share.countDown.value = value?.minus(1) ?: 0
 
     }
 }

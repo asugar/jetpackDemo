@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.yi.jetpackDemo.R
 import com.yi.jetpackDemo.bind.viewModels.MyHandlers
 import com.yi.jetpackDemo.bind.viewModels.ObservableUser
+import com.yi.jetpackDemo.bind.viewModels.SharedViewModel
 import com.yi.jetpackDemo.databinding.FragmentDataBinding2Binding
 
 /**
@@ -22,6 +24,7 @@ class DataBindingFragment2 : Fragment() {
     private val mUser by lazy {
         ObservableUser(ObservableField("欧阳"), ObservableLong(10001))
     }
+    private val shareModel: SharedViewModel by activityViewModels()
 
     private var mScores = ObservableArrayMap<String, String>().apply {
         put("综合", "230")
@@ -44,6 +47,8 @@ class DataBindingFragment2 : Fragment() {
         mUser.address = "北京市昌平区"
         mUser.age = 101
 
+        binding.share = shareModel
+
         binding.handlers = MyHandlers()
         binding.scores = mScores
 
@@ -51,6 +56,7 @@ class DataBindingFragment2 : Fragment() {
 //        mScores.addOnMapChangedCallback(object : ObservableMap.OnMapChangedCallback{
 //
 //        })
+        binding.lifecycleOwner = this
 
         return binding.root
     }

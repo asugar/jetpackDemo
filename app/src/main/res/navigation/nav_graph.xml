@@ -52,6 +52,10 @@
         android:label="DataBindingFragment3"
         tools:layout="@layout/fragment_data_binding3">
         <action
+            android:id="@+id/toDataBindingFragment2"
+            app:destination="@id/DataBindingFragment2" />
+
+        <action
             android:id="@+id/toViewBindingFragment"
             app:destination="@id/ViewBindingFragment" />
     </fragment>

@@ -13,6 +13,10 @@
             type="com.yi.jetpackDemo.bind.viewModels.UserViewModel" />
 
         <variable
+            name="share"
+            type="com.yi.jetpackDemo.bind.viewModels.SharedViewModel" />
+
+        <variable
             name="handlers"
             type="com.yi.jetpackDemo.bind.viewModels.MyHandlers" />
 
@@ -72,6 +76,24 @@
                 android:layout_height="wrap_content"
                 android:checked="@={user.isChecked}" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="testShareViewModule" />
+
+            <TextView
+                android:id="@+id/tvCountDown"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:onClick="@{(view)->handlers.onClickCountDown(view,share)}"
+                android:text="@{share.countDown.toString()}"
+                android:textSize="16sp"
+                tools:text="10" />
+
             <androidx.appcompat.widget.AppCompatImageView
                 imageUrl="@{}"
                 android:layout_width="wrap_content"
@@ -80,13 +102,23 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button_first"
+            android:id="@+id/btLast"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next"
+            android:text="last"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btNext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llContent" />
+
+        <Button
+            android:id="@+id/btNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btLast"
             app:layout_constraintTop_toBottomOf="@id/llContent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

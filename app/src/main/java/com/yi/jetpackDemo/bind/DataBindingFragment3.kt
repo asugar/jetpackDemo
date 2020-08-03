@@ -40,13 +40,12 @@ class DataBindingFragment3 : Fragment() {
                 false
             )
 
-
-
         binding.handlers = MyHandlers()
         userModule.name.value = "hello"
         userModule.age.value = 100
         binding.user = userModule
 
+        binding.share = shareModel
 
         // Create the observer which updates the UI.
         val nameObserver = Observer<String> { newName ->
@@ -58,7 +57,7 @@ class DataBindingFragment3 : Fragment() {
         userModule.name.observe(viewLifecycleOwner, nameObserver)
 
         binding.tvName.setOnClickListener {
-            if (binding.tvName.text.equals("hello")) {
+            if (binding.tvName.text == "hello") {
                 userModule.name.value = "world"
             } else {
                 userModule.name.value = "hello"
@@ -73,7 +72,11 @@ class DataBindingFragment3 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
+        view.findViewById<Button>(R.id.btLast).setOnClickListener {
+            findNavController().navigate(R.id.toDataBindingFragment2)
+        }
+
+        view.findViewById<Button>(R.id.btNext).setOnClickListener {
             findNavController().navigate(R.id.toViewBindingFragment)
         }
     }

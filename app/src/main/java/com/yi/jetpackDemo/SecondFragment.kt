@@ -32,9 +32,5 @@ class SecondFragment : Fragment() {
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
             findNavController().navigate(R.id.toViewBindingFragment)
         }
-
-        shareModel.selected.observe(viewLifecycleOwner, Observer<Int> { item ->
-            // Update the UI
-        })
     }
 }

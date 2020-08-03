@@ -15,6 +15,10 @@
             type="com.yi.jetpackDemo.bind.viewModels.ObservableUser" />
 
         <variable
+            name="share"
+            type="com.yi.jetpackDemo.bind.viewModels.SharedViewModel" />
+
+        <variable
             name="handlers"
             type="com.yi.jetpackDemo.bind.viewModels.MyHandlers" />
 
@@ -100,6 +104,22 @@
                 android:text="@{String.valueOf(scores.size())}"
                 android:textSize="16sp"
                 tools:text="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="testShareViewModule" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:onClick="@{(view)->handlers.onClickCountDown(view,share)}"
+                android:text="@{share.countDown.toString()}"
+                tools:text="10" />
 
         </LinearLayout>
 
