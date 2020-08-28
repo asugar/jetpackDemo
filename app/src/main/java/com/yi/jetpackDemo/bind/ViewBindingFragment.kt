@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.yi.jetpackDemo.R
@@ -44,7 +45,8 @@ class ViewBindingFragment : Fragment() {
 
         binding?.btnBack?.setOnClickListener {
 //            showSnackBar("this is submit")
-            findNavController().navigate(R.id.toMainFragment)
+            findNavController().popBackStack(R.id.MainFragment, false)
+//            findNavController().navigate(R.id.toMainFragment,null,NavOptions.Builder().setPopUpTo())
         }
     }
 

@@ -6,6 +6,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.ObservableArrayMap
 
+/**
+ * 适合处理无过多业务的点击交互
+ * 1）如果关联业务，建议使用普通接口回调
+ * 2）可以使用可观察字段去做
+ */
 class MyHandlers {
 
     fun onClickFirstName(view: View) {

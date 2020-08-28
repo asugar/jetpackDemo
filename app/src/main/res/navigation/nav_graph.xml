@@ -85,7 +85,7 @@
             app:destination="@id/DataBindingFragment2" />
 
         <action
-            android:id="@+id/toViewBindingFragment"
+            android:id="@+id/toMainFragment"
             app:destination="@id/MainFragment" />
     </fragment>
     <!--binding end-->

@@ -22,7 +22,7 @@
 
         <variable
             name="bindAdapter"
-            type="com.yi.jetpackDemo.bind.viewModels.BindAdapter" />
+            type="com.yi.jetpackDemo.bind.viewModels.BindingAdapters" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,10 +94,11 @@
                 android:textSize="16sp"
                 tools:text="10" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                imageUrl="@{}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
 
         </LinearLayout>
 
