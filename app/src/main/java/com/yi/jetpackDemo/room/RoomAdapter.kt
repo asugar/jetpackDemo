@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yi.jetpackDemo.databinding.ItemRoomBinding
+import com.yi.jetpackDemo.room.database.User
 
 class RoomAdapter(var mData: ArrayList<User>?) :
     RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {

@@ -40,4 +40,4 @@ import android.widget.ImageView
         BindingMethod(type = ImageView::class,
                 attribute = "app:srcCompat",
                 method = "setImageResource"))
-class MyBindingMethods
+class MyBindingMethods{}

@@ -1,9 +1,10 @@
-package com.yi.jetpackDemo.room
+package com.yi.jetpackDemo.room.database
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.yi.jetpackDemo.room.database.User
 
 @Dao
 interface UserDao {
@@ -19,8 +20,14 @@ interface UserDao {
     )
     fun findByName(first: String, last: String): User
 
+    @Query("select * from user where uid = :uid")
+    fun findById(uid: Int): User
+
     @Insert
     fun insertAll(vararg users: User)
+
+//    @Query("insert into user values(:user)")
+//    fun insert(user: User)
 
     @Delete
     fun delete(user: User)

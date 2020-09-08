@@ -2,6 +2,9 @@ package com.yi.jetpackDemo.room
 
 import android.util.Log
 import android.view.View
+import com.yi.jetpackDemo.room.database.Address
+import com.yi.jetpackDemo.room.database.DBManager
+import com.yi.jetpackDemo.room.database.User
 import kotlinx.coroutines.*
 
 class ClickHandler(val fragment: RoomFragment) {
@@ -15,12 +18,17 @@ class ClickHandler(val fragment: RoomFragment) {
         Log.d("xiaoyi", "onClickInsert")
         runBlocking {
             launch(mThreadPool) {
+                val user = DBManager.getDBManager(view.context).userDao().findById(1)
+                if (user != null) {
+                    return@launch
+                }
                 DBManager.getDBManager(view.context).userDao().insertAll(
-                    User(1, "hello", "java"),
-                    User(2, "hello", "android"),
-                    User(3, "hello", "es6"),
-                    User(4, "hello", "html"),
-                    User(5, "hello", "python")
+//                    address = Address("1", "1", "1", 1)
+                    User(1, "hello", "java", "", address = Address(null, "1", "1", "1", 1)),
+                    User(2, "hello", "android", "", address = Address(null, "1", "1", "1", 1)),
+                    User(3, "hello", "es6", "", address = Address(null, "1", "1", "1", 1)),
+                    User(4, "hello", "html", "", address = Address(null, "1", "1", "1", 1)),
+                    User(5, "hello", "python", "", address = Address(null, "1", "1", "1", 1))
                 )
             }
         }

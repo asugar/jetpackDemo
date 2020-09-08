@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
 import com.yi.jetpackDemo.R
 import com.yi.jetpackDemo.databinding.FragmentRoomBinding
+import com.yi.jetpackDemo.room.database.User
 import kotlinx.android.synthetic.main.fragment_room.*
 
 class RoomFragment : Fragment() {
