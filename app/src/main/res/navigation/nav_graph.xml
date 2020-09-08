@@ -18,7 +18,23 @@
         <action
             android:id="@+id/toWorkManagerFragment"
             app:destination="@id/WorkManagerFragment" />
+
+        <action
+            android:id="@+id/toRoomFragment"
+            app:destination="@id/RoomFragment" />
     </fragment>
+
+    <!--room begin-->
+    <fragment
+        android:id="@+id/RoomFragment"
+        android:name="com.yi.jetpackDemo.room.RoomFragment"
+        android:label="RoomFragment"
+        tools:layout="@layout/fragment_room">
+
+    </fragment>
+
+    <!--room end-->
+
     <!--work manager begin-->
     <fragment
         android:id="@+id/WorkManagerFragment"

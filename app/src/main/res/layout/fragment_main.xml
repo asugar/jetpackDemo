@@ -21,9 +21,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="to_work_manager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/btnToRoom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnToBinding" />
+
+    <Button
+        android:id="@+id/btnToRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="to_room"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnToWorkManager" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

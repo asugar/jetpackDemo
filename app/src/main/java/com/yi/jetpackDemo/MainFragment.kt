@@ -1,14 +1,12 @@
 package com.yi.jetpackDemo
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.yi.jetpackDemo.bind.viewModels.SharedViewModel
 
 /**
  * mainFragment 导航入口
@@ -32,5 +30,10 @@ class MainFragment : Fragment() {
         view.findViewById<Button>(R.id.btnToWorkManager).setOnClickListener {
             findNavController().navigate(R.id.toWorkManagerFragment)
         }
+
+        view.findViewById<Button>(R.id.btnToRoom).setOnClickListener {
+            findNavController().navigate(R.id.toRoomFragment)
+        }
+
     }
 }
