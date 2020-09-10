@@ -20,6 +20,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".lunchModel.ActivityA"
+            android:launchMode="standard" />
+        <activity
+            android:name=".lunchModel.ActivityB"
+            android:clearTaskOnLaunch="false"
+            android:launchMode="standard" />
+        <activity
+            android:name=".lunchModel.ActivityC"
+            android:finishOnTaskLaunch="false" />
+
     </application>
 
 </manifest>
