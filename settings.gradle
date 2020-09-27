@@ -1,2 +1,3 @@
+include ':rxjavaDemo'
 include ':app'
 rootProject.name = "jetpackDemo"
