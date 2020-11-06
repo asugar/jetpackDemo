@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'dellog'
 
 android {
     compileSdkVersion 29
@@ -11,17 +12,36 @@ android {
         applicationId "com.yi.jetpackdemo"
         minSdkVersion 17
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode verCode as Integer
+        versionName getLocalVersionName()
+//        archivesBaseName = "jetpack-$versionName"
         multiDexEnabled true
+    }
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    signingConfigs {
+        config {
+            keyAlias 'xiaoyi'
+            keyPassword '123456'
+            storeFile file('sign.jks')
+            storePassword '123456'
+        }
     }
 
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "jetpack_${variant.buildType.name}_${defaultConfig.versionName}.apk"
+            }
         }
     }
     compileOptions {
@@ -99,9 +119,34 @@ dependencies {
     def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"
 
+    // logger
+    implementation "com.orhanobut:logger:2.2.0"
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+}
+
+static def generateApkTime() {
+    return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("GMT+8"))
+}
+
+def getLocalVersionName() {
+    def vName
+    if (!gradle.startParameter.taskNames.contains(":app:release")) {
+        vName = verName + "_" + generateApkTime()
+    } else {
+        vName = verName
+    }
+    println("versionName1=" + gradle.startParameter.taskNames)
+    println("versionName2=" + vName)
+    return vName
+}
+
+// 自定义plugin
+//dellogExtension.sourceDir = '/src'
+dellogExtension {
+    sourceDir = '/src'
 }

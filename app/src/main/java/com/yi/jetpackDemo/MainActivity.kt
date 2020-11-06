@@ -1,13 +1,16 @@
 package com.yi.jetpackDemo
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import com.orhanobut.logger.Logger
 
 class MainActivity : AppCompatActivity() {
+
+    private val tag = MainActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +24,8 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
+        Logger.t(tag)
+            .d("versionName=${BuildConfig.VERSION_NAME} versionCode=${BuildConfig.VERSION_CODE}")
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

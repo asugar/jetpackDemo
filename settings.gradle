@@ -1,3 +1,5 @@
+include ':plugin'
+include ':aspectjLib'
 include ':rxjavaDemo'
 include ':app'
 rootProject.name = "jetpackDemo"
