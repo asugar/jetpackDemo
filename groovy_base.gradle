@@ -1,0 +1,147 @@
+/**
+ * groovy基础
+ */
+/**
+ * 字符串
+ * def 定义
+ */
+task printStringClass() {
+    def str1 = '单引号'
+    def str2 = '双引号'
+    println "str1= $str1"
+    println "str2= $str2"
+    println "-----------单引号没有运算能力---------"
+    println '--- str1= $str1'
+    println "--- str2= $str2"
+}
+
+/**
+ * 集合
+ * List，Set，Map和Queue
+ */
+task printList() {
+    def numList = [1, 2, 3, 4, 5, 6]
+    println numList.getClass().name
+    println numList[1]
+    println numList[-1]//最后一个元素
+    println numList[-2]// 倒数第二个元素
+    println numList[1..3]// 第2个到第4个元素
+    numList.each {
+        println it
+    }
+}
+task printMap() {
+    def map = ['width': 1024, 'height': 768]
+    println map.getClass().name
+    println(map['width'])
+    println(map['height'])
+    map.each {
+        println "key:${it.key}, value:${it.value}"
+    }
+}
+
+/**
+ * 方法
+ * 参数的括号可以省略
+ * return是可以不写的
+ * 代码块可以作为参数传递
+ */
+def method1(int a, int b) {
+    println a + b
+}
+
+def maxMethod(int a, int b) {
+    if (a > b) {
+        a
+    } else {
+        b
+    }
+}
+
+def testBlock(Closure closure) {
+    def re = closure.call()
+    println "testBlock $re"
+}
+
+task invokeMethod() {
+    method1(1, 2)
+    method1 1, 2
+
+    def re = maxMethod(1, 5)
+    println "re= $re"
+
+    testBlock {
+        "block"
+    }
+}
+
+/**
+ * JavaBean
+ * groovy定义的变化自动拥有getter/setter方法
+ */
+task helloJavaBean() {
+    Person p = new Person()
+    println "person 1 name= ${p.name}"
+    p.name = "littleEasy"
+    println "person 2 name= ${p.name}"
+}
+
+class Person {
+    String name
+}
+
+/**
+ * 闭包
+ * groovy具有闭包的特性
+ * 向闭包传参，类似kotlin
+ * 闭包委托：thisObject,owner,delgate三个属性
+ */
+task helloClosure() {
+    //调用闭包
+    customEach { f, s ->
+        println "f= $f, s= $s"
+    }
+}
+
+def customEach(closure) {
+    for (int i in 1..10) {
+        closure(i, 2 * i)
+    }
+}
+
+/**
+ * 不太理解实际的应用，代理的实例和方法本身的实例本身就是不一样的
+ */
+task helloDelegate() {
+    new Delegate().test {
+        println "thisObject: ${thisObject.getClass()}"
+        println "owner: ${owner.getClass()}"
+        println "delegate: ${delegate.getClass()}"
+        method1()
+        it.method1()
+    }
+}
+
+def method1() {
+    println "Delegate this:${this.getClass()} in root"
+    println "method1 in root"
+}
+
+class Delegate {
+    def method1() {
+        println "Delegate this:${this.getClass()} in Delegate"
+        println "method1 in Delegate"
+    }
+
+    def test(Closure<Delegate> closure) {
+        closure(this)
+    }
+}
+
+
+/**
+ * DSL:领域特定语言
+ */
+
+
+

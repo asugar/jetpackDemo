@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dellog'
+apply from: '../groovy_base.gradle'
 
 android {
     compileSdkVersion 29
@@ -148,5 +149,5 @@ def getLocalVersionName() {
 // 自定义plugin
 //dellogExtension.sourceDir = '/src'
 dellogExtension {
-    sourceDir = '/src'
+//    sourceDir = '/src'
 }
