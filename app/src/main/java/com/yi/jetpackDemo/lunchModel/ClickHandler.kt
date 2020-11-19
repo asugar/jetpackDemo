@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 
-const val tag = "launchModel"
+const val TAG_LAUNCH_MODEL = "launchModel"
 
 class ClickHandler(val context: Context) {
 

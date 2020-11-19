@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dellog'
 apply from: '../groovy_base.gradle'
+apply from: '../gradle_base.gradle'
 
 android {
     compileSdkVersion 29
@@ -39,12 +40,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
         }
-        applicationVariants.all { variant ->
-            variant.outputs.all {
-                outputFileName = "jetpack_${variant.buildType.name}_${defaultConfig.versionName}.apk"
-            }
+
+    }
+    // 用于android应用gradle插件 libraryVariants  testVariants
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "jetpack_${variant.buildType.name}_${defaultConfig.versionName}.apk"
         }
     }
+//    applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            if (output.outputFile != null && output.outputFile.name.endsWith('.apk') && "release".equals(variant.buildType.name)) {
+//                def apkFile = new File(output.outputFile.getParent(), "2jetpack_${variant.buildType.name}_${defaultConfig.versionName}")
+//                output.outputFile = apkFile
+//            }
+//        }
+//    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

@@ -144,4 +144,106 @@ class Delegate {
  */
 
 
+/**
+ * 任务依赖
+ * dependsOn关键字没找到
+ */
+task task1() {
+    println "task1 invoked"
+}
+
+task task2(dependsOn: task1) {
+//    task2.dependsOn(task1)
+    println "task2 invoked"
+}
+
+/**
+ * 自定义属性
+ */
+ext.age = 11
+ext {
+    name = "xiaoyi"
+    address = "beijing"
+}
+Task printExt = task printExt() {
+    println("age=${project.ext.age},name=${project.ext.name},address=${project.ext.address}")
+    println("group= ${group}, description= ${description}")
+}
+printExt.group = BasePlugin.BUILD_GROUP
+printExt.description = "this is a description"
+printExt.doLast {
+    println("doLast group= ${group}, description= ${description}")
+}
+
+/**
+ * 任务执行分析
+ * gradlew customTask
+ * CustomTask 报错可以不用管
+ */
+Task myTask = task customTask(type: CustomTask)
+
+myTask.doFirst {
+    println("myTask in doFirst")
+}
+
+myTask.doLast {
+    println("myTask in doLast")
+}
+
+class CustomTask extends DefaultTask {
+
+    @TaskAction
+    void doSelf() {
+        println("myTask in doSelf")
+    }
+}
+
+//assemble.enabled(false)
+/**
+ * 任务的onlyIf断言
+ */
+task helloOnlyIf() {
+    println("invoked helloOnlyIf")
+//    Task task = TaskContainer.create
+//    println("task $task")
+//    task()
+}
+
+helloOnlyIf.onlyIf {
+    def execute = false
+    if (project.hasProperty("testOnlyIf")) {
+        Object testOnlyIf = project.property("testOnlyIf")
+        println("helloOnlyIf.onlyIf $testOnlyIf")
+        if (testOnlyIf.equals("666")) {
+            execute = true
+        } else {
+            false
+        }
+
+    } else {
+        execute = true
+    }
+    execute
+}
+
+/**
+ * 执行shell命令
+ */
+task getAppVersionName() {
+    def stdout = new ByteArrayOutputStream()
+    exec {
+//        commandLine 'git', 'log'
+//        commandLine 'git', 'branch', '-r'
+        commandLine 'git', 'reflog'
+        standardOutput = stdout
+    }
+    println("getAppVersionName ${stdout.toString()}")
+}
+
+
+
+
+
+
+
 
