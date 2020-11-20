@@ -10,10 +10,23 @@ import androidx.fragment.app.Fragment
 import com.yi.jetpackDemo.R
 import com.yi.jetpackDemo.lunchModel.OnActivityClickListener
 import com.yi.jetpackDemo.lunchModel.TAG_LAUNCH_MODEL
+import kotlinx.android.synthetic.main.fragment_a.*
 
 class FragmentA : Fragment() {
 
     private var mListener: OnActivityClickListener? = null
+    private var mTitle: String? = null
+
+    companion object {
+        const val key_title = "keyTitle"
+        fun getInstance(title: String): FragmentA {
+            val fragment = FragmentA()
+            val args = Bundle()
+            args.putString(key_title, title)
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -27,6 +40,7 @@ class FragmentA : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG_LAUNCH_MODEL, "FragmentA onCreate")
+        mTitle = arguments?.getString(key_title)
     }
 
     override fun onCreateView(
@@ -41,6 +55,7 @@ class FragmentA : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG_LAUNCH_MODEL, "FragmentA onViewCreated")
+        tv_title.text = mTitle ?: "FragmentA"
     }
 
     override fun onStart() {

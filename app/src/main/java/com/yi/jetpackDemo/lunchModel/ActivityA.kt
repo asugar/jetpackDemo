@@ -20,6 +20,7 @@ class ActivityA : AppCompatActivity(), OnActivityClickListener {
     lateinit var mBinding: ActivityABinding
     val KEY_STATE = "state"
     val KEY_VIEW = "view"
+    var count: Int = 1
 
     override fun onActivityClick(name: String) {
         Log.d(TAG_LAUNCH_MODEL, "ActivityA onActivityClick $name")
@@ -38,17 +39,38 @@ class ActivityA : AppCompatActivity(), OnActivityClickListener {
         mBinding.tvSwitch.setOnClickListener {
             createFragment()
         }
+        mBinding.tvAdd.setOnClickListener {
+            addFragment()
+        }
+    }
+
+    private fun addFragment() {
+        val transaction = supportFragmentManager.beginTransaction()
+        val fragment = FragmentA.getInstance("fragment-a-add-${count++}")
+        transaction.setCustomAnimations(
+            R.anim.slide_in,  // enter
+            R.anim.fade_out,  // exit
+            R.anim.fade_in,   // popEnter
+            R.anim.slide_out  // popExit
+        )
+        transaction.add(R.id.fragment_container, fragment)
+        transaction.addToBackStack(null)// commit之后会放在返回栈中，点击返回会回到之前栈
+        transaction.commit()
     }
 
     private fun createFragment() {
         val transaction = supportFragmentManager.beginTransaction()
-        val fragment = FragmentA()
-        transaction.add(R.id.fragment_a, fragment)
+        val fragment = FragmentA.getInstance("fragment-a-switch-${count++}")
+        transaction.setCustomAnimations(
+            R.anim.slide_in,  // enter
+            R.anim.fade_out,  // exit
+            R.anim.fade_in,   // popEnter
+            R.anim.slide_out  // popExit
+        )
         transaction.replace(R.id.fragment_a, fragment)
         transaction.addToBackStack(null)// commit之后会放在返回栈中，点击返回会回到之前栈
         transaction.commit()
-
-        supportFragmentManager.findFragmentById(R.id.fragment_a)// 获取fragment的实例
+//        supportFragmentManager.findFragmentById(R.id.fragment_a)// 获取fragment的实例
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -70,7 +92,7 @@ class ActivityA : AppCompatActivity(), OnActivityClickListener {
         val state = savedInstanceState.getString(KEY_STATE)
         val view = savedInstanceState.getString(KEY_VIEW)
         Log.d(TAG_LAUNCH_MODEL, "ActivityA onRestoreInstanceState $state $view")
-        mBinding.textView.text = view?.length.toString()
+        mBinding.tvTitle.text = view?.length.toString()
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -98,7 +120,7 @@ class ActivityA : AppCompatActivity(), OnActivityClickListener {
         Log.d(TAG_LAUNCH_MODEL, "ActivityA onSaveInstanceState")
         outState.run {
             putString(KEY_STATE, "open-p")
-            putString(KEY_VIEW, mBinding.textView.text.toString())
+            putString(KEY_VIEW, mBinding.tvTitle.text.toString())
         }
         super.onSaveInstanceState(outState)
     }
@@ -108,7 +130,7 @@ class ActivityA : AppCompatActivity(), OnActivityClickListener {
         Log.d(TAG_LAUNCH_MODEL, "ActivityA onSaveInstanceState 2")
         outPersistentState.run {
             putString(KEY_STATE, "open-2")
-            putString(KEY_VIEW, mBinding.textView.text.toString())
+            putString(KEY_VIEW, mBinding.tvTitle.text.toString())
         }
         super.onSaveInstanceState(outState, outPersistentState)
     }

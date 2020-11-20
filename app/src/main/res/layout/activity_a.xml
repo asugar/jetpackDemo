@@ -14,27 +14,44 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
             android:onClick="@{handler::onClickA}"
             android:text="activityA"
-            app:layout_constraintBottom_toTopOf="@+id/tv_switch"
+            app:layout_constraintBottom_toTopOf="@+id/llContent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_switch"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llContent"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:text="切换fragment"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/fragment_a"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+            <TextView
+                android:id="@+id/tv_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="切换fragment" />
+
+            <TextView
+                android:id="@+id/tv_add"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="添加fragment" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
 
         <fragment
             android:id="@+id/fragment_a"
@@ -44,7 +61,7 @@
             app:layout_constraintBottom_toTopOf="@+id/fragment_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_switch" />
+            app:layout_constraintTop_toBottomOf="@+id/llContent" />
 
         <FrameLayout
             android:id="@+id/fragment_container"

@@ -4,7 +4,6 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dellog'
 apply from: '../groovy_base.gradle'
-apply from: '../gradle_base.gradle'
 
 android {
     compileSdkVersion 29
@@ -133,6 +132,10 @@ dependencies {
 
     // logger
     implementation "com.orhanobut:logger:2.2.0"
+
+    // smarttablayout
+    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
 
 
     testImplementation 'junit:junit:4.12'
