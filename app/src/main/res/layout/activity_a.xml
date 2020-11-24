@@ -52,7 +52,6 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
         <fragment
             android:id="@+id/fragment_a"
             android:name="com.yi.jetpackDemo.lunchModel.fragmentLife.FragmentA"

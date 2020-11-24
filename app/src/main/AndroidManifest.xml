@@ -33,6 +33,10 @@
         <activity
             android:name=".lunchModel.ActivityC"
             android:finishOnTaskLaunch="false" />
+
+        <activity
+            android:name=".lunchModel.ActivityC2"
+            android:finishOnTaskLaunch="false" />
     </application>
 
 </manifest>

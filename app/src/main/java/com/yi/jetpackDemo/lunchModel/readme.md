@@ -69,7 +69,6 @@
 * onPause和onStop之间onSaveInstanceState
 * activity：onStart和onResume之间onRestoreInstanceState  fragment：onViewCreated和onStart之间
 
-
 # fragment预加载和懒加载
 BEHAVIOR_SET_USER_VISIBLE_HINT 模式废弃，会执行setUserVisibleHint 不可见是也会执行onResume
 BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT 不执行setUserVisibleHint 可见是执行onResume
@@ -79,5 +78,16 @@ setPrimaryItem --》 setMaxLifecycle
 占用内存多   占用内存少 原因：再不使用的时候会销毁，消息代码再destroyItem方法中，会remove掉
 
 # shared-element-trainsitions
+## 启动fragment
+1）需要再动画的view上添加 android:transitionName="shared_image"
+2）此处的shared_image 对应transition中的动画文件
+3）在启动的fragment的oncreate方法中指定
+sharedElementEnterTransition = androidx.transition.TransitionInflater.from(requireContext())
+                                            .inflateTransition(R.transition.shared_image)
+
+## 启动activity
+1）启动的activity页面使用ActivityOptionsCompat
+
+
 
 

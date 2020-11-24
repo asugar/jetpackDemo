@@ -46,5 +46,20 @@ class FragmentC : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvTitle.text = mTitle ?: "FragmentC"
+        ivTransition.setOnClickListener {
+            val fragment = FragmentC2.getInstance("fragmentC2")
+
+            parentFragmentManager.beginTransaction()
+//                .setCustomAnimations(
+//                    R.anim.slide_in,  // enter
+//                    R.anim.fade_out,  // exit
+//                    R.anim.fade_in,   // popEnter
+//                    R.anim.slide_out  // popExit
+//                )
+                .addSharedElement(ivTransition, "shared_image")
+                .replace(R.id.flContent, fragment)
+                .addToBackStack(null)
+                .commit();
+        }
     }
 }

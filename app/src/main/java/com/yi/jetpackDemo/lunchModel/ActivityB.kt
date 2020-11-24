@@ -10,6 +10,9 @@ import com.yi.jetpackDemo.lunchModel.fragmentLife.FragmentB
 import com.yi.jetpackDemo.view.vp.NavAdapter
 import kotlinx.android.synthetic.main.activity_b.*
 
+/**
+ * 多fragment嵌套
+ */
 class ActivityB : AppCompatActivity() {
 
     lateinit var mBinding: ActivityBBinding

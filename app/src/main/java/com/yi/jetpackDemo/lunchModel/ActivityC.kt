@@ -1,14 +1,18 @@
 package com.yi.jetpackDemo.lunchModel
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import com.yi.jetpackDemo.R
 import com.yi.jetpackDemo.databinding.ActivityCBinding
 import com.yi.jetpackDemo.lunchModel.fragmentLife.FragmentC
 
-
+/**
+ * fragment shared element transitions
+ */
 class ActivityC : AppCompatActivity() {
 
     lateinit var mBinding: ActivityCBinding
@@ -25,19 +29,21 @@ class ActivityC : AppCompatActivity() {
 
     private fun initView() {
         ViewCompat.setTransitionName(mBinding.ivIcon, "shared_image")
+        val fragment = FragmentC.getInstance("fragmentC-${count++}")
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.flContent, fragment)
+            .commit()
+
         mBinding.ivIcon.setOnClickListener {
-            val fragment = FragmentC.getInstance("fragmentC-${count++}")
-            supportFragmentManager.beginTransaction()
-//                .setCustomAnimations(
-//                    R.anim.slide_in,  // enter
-//                    R.anim.fade_out,  // exit
-//                    R.anim.fade_in,   // popEnter
-//                    R.anim.slide_out  // popExit
-//                )
-                .addSharedElement(mBinding.ivIcon, "shared_image")
-                .replace(R.id.flContent, fragment)
-                .addToBackStack(null)
-                .commit();
+            //启动activity
+            val intent = Intent(this@ActivityC, ActivityC2::class.java)
+            val options: ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this@ActivityC,
+                mBinding.ivIcon,
+                "shared_image"
+            )
+            startActivity(intent, options.toBundle())
         }
     }
 }
