@@ -88,6 +88,16 @@ sharedElementEnterTransition = androidx.transition.TransitionInflater.from(requi
 ## 启动activity
 1）启动的activity页面使用ActivityOptionsCompat
 
-
+## SingleTask：Activity 一次只能有一个实例存在
+### 查看activity任务栈信息：adb shell dumpsys activity | grep com.xxx.xxx.xx
+### 如果SingleTask的Activity已经存在任务中，会不会把之上的activity清栈
+a--singleTask
+b
+c --> 启动a，b，c出栈
+### 两个Task，每个task里有两个activity，其中有一个task中的Activity时SingleTask的
+a(singleTask,taskAffinity="com.a") --> b(taskAffinity="com.a") --> c(taskAffinity="com.b") --> d(taskAffinity="com.b") --> 启动a
+按返回键 -- 回调d
+再返回 -- 回到c
+再返回 -- 回首页
 
 

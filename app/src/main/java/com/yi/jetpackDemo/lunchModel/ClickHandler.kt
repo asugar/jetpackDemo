@@ -25,4 +25,9 @@ class ClickHandler(val context: Context) {
 //        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP+singleTop == singleTask
         context.startActivity(intent)
     }
+
+    fun onClickCC(view: View) {
+        val intent = Intent(context, ActivityA::class.java)
+        context.startActivity(intent)
+    }
 }

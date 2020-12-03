@@ -12,6 +12,7 @@ class ActivityC2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityC2Binding.inflate(layoutInflater)
+        mBinding.handler = ClickHandler(baseContext)
         setContentView(mBinding.root)
     }
 
