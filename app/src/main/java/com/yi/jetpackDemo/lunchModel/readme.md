@@ -101,3 +101,7 @@ a(singleTask,taskAffinity="com.a") --> b(taskAffinity="com.a") --> c(taskAffinit
 再返回 -- 回首页
 
 
+## 在Fragment之间传递数据
+
+## 与其他Fragment通信
+
