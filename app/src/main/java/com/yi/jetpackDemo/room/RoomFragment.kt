@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.yi.jetpackDemo.R
 import com.yi.jetpackDemo.databinding.FragmentRoomBinding
 import com.yi.jetpackDemo.room.database.User
+import com.yi.jetpackDemo.room.greenDaoDB.User2
 import kotlinx.android.synthetic.main.fragment_room.*
 
 class RoomFragment : Fragment() {
 
     lateinit var mBinding: FragmentRoomBinding
-    val mAdapter = RoomAdapter(null)
+    val mAdapter = RoomAdapter(null, null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +44,7 @@ class RoomFragment : Fragment() {
         rvUser.adapter = mAdapter
     }
 
-    fun refreshData(data: List<User>) {
-        mAdapter.refreshData(data)
+    fun refreshData(data: List<User>?, data2: List<User2>?, dbType: Int = 1) {
+        mAdapter.refreshData(data, data2, dbType)
     }
 }

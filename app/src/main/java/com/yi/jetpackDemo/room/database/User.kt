@@ -11,14 +11,12 @@ import androidx.room.*
 //Embedded 相当于再当前表中插入类中的字段
 @Entity
 data class User(
-    @PrimaryKey(autoGenerate = true) var uid: Int,
+    @PrimaryKey(autoGenerate = true) var uid: Int?,
     @ColumnInfo(name = "first_name") var firstName: String?,
     @ColumnInfo(name = "last_name") var lastName: String?,
     @Ignore val telephone: String?,
     @Embedded val address: Address?
 ) {
-
-
     constructor(
         uid: Int,
         firstName: String?,

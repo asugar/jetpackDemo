@@ -9,6 +9,14 @@
             name="user"
             type="com.yi.jetpackDemo.room.database.User" />
 
+        <variable
+            name="user2"
+            type="com.yi.jetpackDemo.room.greenDaoDB.User2" />
+
+        <variable
+            name="dbType"
+            type="java.lang.Integer" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,13 +24,24 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/tvUid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{dbType == 1 ? user.uid.toString() : user2.uid.toString()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvFirstName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="uid" />
+
+        <TextView
             android:id="@+id/tvFirstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.firstName}"
+            android:text="@{dbType == 1 ? user.firstName : user2.firstName}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tvLastName"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvUid"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="hello" />
 
@@ -30,12 +49,45 @@
             android:id="@+id/tvLastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.lastName}"
+            android:text="@{dbType == 1 ? user.lastName : user2.lastName}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvCity"
             app:layout_constraintStart_toEndOf="@+id/tvFirstName"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="world" />
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{dbType == 1 ? user.address.city : user2.address.city}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvState"
+            app:layout_constraintStart_toEndOf="@+id/tvLastName"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="city" />
+
+        <TextView
+            android:id="@+id/tvState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{dbType == 1 ? user.address.state : user2.address.state}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvStreet"
+            app:layout_constraintStart_toEndOf="@+id/tvCity"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="state" />
+
+        <TextView
+            android:id="@+id/tvStreet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{dbType == 1 ? user.address.street : user2.address.street}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvState"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="street" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

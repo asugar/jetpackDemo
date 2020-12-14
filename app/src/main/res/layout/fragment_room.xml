@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,46 +14,95 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvUser"
+        <LinearLayout
+            android:id="@+id/llOperator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/llOperator2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnInsert"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Room       "
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnInsert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{handler::onClickInsert}"
+                android:text="insert" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{handler::onClickDelete}"
+                android:text="delete" />
+
+            <Button
+                android:id="@+id/btnQuery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{handler::onClickQuery}"
+                android:text="query" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llOperator2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{handler::onClickInsert}"
-            android:text="insert"
-            app:layout_constraintBottom_toTopOf="@+id/btnDelete"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/rvUser"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvUser" />
+            app:layout_constraintTop_toBottomOf="@+id/llOperator">
 
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{handler::onClickDelete}"
-            android:text="delete"
-            app:layout_constraintBottom_toTopOf="@+id/btnQuery"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnInsert" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GreenDao"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/btnQuery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{handler::onClickQuery}"
-            android:text="query"
+            <Button
+                android:id="@+id/btnInsert2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{handler::onClickInsert2}"
+                android:text="insert" />
+
+            <Button
+                android:id="@+id/btnDelete2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{handler::onClickDelete2}"
+                android:text="delete" />
+
+            <Button
+                android:id="@+id/btnQuery2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{handler::onClickQuery2}"
+                android:text="query" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvUser"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnDelete" />
+            app:layout_constraintTop_toBottomOf="@+id/llOperator2"
+            tools:listitem="@layout/item_room" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
