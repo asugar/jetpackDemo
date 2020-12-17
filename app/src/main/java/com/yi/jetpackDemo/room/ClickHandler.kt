@@ -14,6 +14,9 @@ class ClickHandler(val fragment: RoomFragment) {
     private val mThreadPool = newFixedThreadPoolContext(6, "clickHandler")
 
     private val mDaoSession: DaoSession by lazy {
+//        val database =
+//            DBOpenHelper.getHelper(fragment.requireContext())?.getEncryptedWritableDb("abc")
+//        DaoMaster(database).newSession()
         DaoMaster(DBOpenHelper.getHelper(fragment.requireContext())?.writableDb).newSession()
     }
 

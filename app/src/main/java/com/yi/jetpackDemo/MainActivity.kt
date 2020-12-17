@@ -35,6 +35,34 @@ class MainActivity : AppCompatActivity() {
 
         Logger.t(tag)
             .d("versionName=${BuildConfig.VERSION_NAME} versionCode=${BuildConfig.VERSION_CODE}")
+
+        val businessTags = getBusinessTags()
+        Logger.t(tag).d("businessTags $businessTags")
+    }
+
+    private fun getBusinessTags(): List<String> {
+        val tags = ArrayList<String>()
+        try {
+            val files = resources.assets.list("")
+            Logger.t(tag).d("getBusinessTags ${files?.toList()} ")
+            val prodBusinessTags = files?.filter { it.matches(Regex("^prod_\\w*.zip\$")) }
+            val reactBusinessTags = files?.filter { it.matches(Regex("^react_\\w*.zip\$")) }
+            Logger.t(tag)
+                .d("BusinessTags ${prodBusinessTags?.toList()} ${reactBusinessTags?.toList()} ")
+            prodBusinessTags?.forEach {
+                val businessTag = it.substring(5, it.indexOf("."))
+                Logger.t(tag).d("businessTag $businessTag ")
+                tags.add(businessTag)
+            }
+            reactBusinessTags?.forEach {
+                val businessTag = it.substring(6, it.indexOf("."))
+                Logger.t(tag).d("businessTag $businessTag ")
+                tags.add(businessTag)
+            }
+            return tags
+        } catch (e: Exception) {
+            return tags
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

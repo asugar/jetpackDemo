@@ -131,6 +131,9 @@ dependencies {
 
     // 添加greenDao
     implementation 'org.greenrobot:greendao:3.3.0' // add library
+//    implementation files('libs/sqlcipher.jar')
+//    implementation "net.zetetic:android-database-sqlcipher:4.4.2"
+//    implementation "androidx.sqlite:sqlite:2.1.0"
 
     // 添加stecho库 查看数据库，打印网络日志
     implementation 'com.facebook.stetho:stetho:1.5.1'
