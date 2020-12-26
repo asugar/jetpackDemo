@@ -9,6 +9,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.yi.jetpackDemo.lunchModel.ActivityA
+import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
  * mainFragment 导航入口
@@ -36,10 +37,19 @@ class MainFragment : Fragment() {
         view.findViewById<Button>(R.id.btnToRoom).setOnClickListener {
             findNavController().navigate(R.id.toRoomFragment)
         }
-        
+
         view.findViewById<Button>(R.id.btnToLaunchModel).setOnClickListener {
             val intent = Intent(context, ActivityA::class.java)
             startActivity(intent)
         }
+
+        initBanner()
     }
+
+    private fun initBanner() {
+        banner.addBannerLifecycleObserver(this)//添加生命周期观察者
+//            .setAdapter(new BannerExampleAdapter (DataBean.getTestData()))
+            .setIndicator(indicator, false)
+    }
+
 }

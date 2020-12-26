@@ -1,7 +1,9 @@
 package com.yi.javaBase;
 
 public class TestClassInstance {
+
     public static void main(String[] args) {
-        System.out.println(new ClassInstance());
+        String name = ClassInstance.address;
+//        System.out.println(new ClassInstance());
     }
 }

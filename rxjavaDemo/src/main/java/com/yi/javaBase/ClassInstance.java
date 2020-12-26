@@ -11,7 +11,7 @@ public class ClassInstance {
     public static String address = "address";
 
     static {
-        System.out.println("static invoked");
+        System.out.println("static invoked  $address" + name + " - " + address);
     }
 
     public ClassInstance() {

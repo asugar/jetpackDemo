@@ -26,3 +26,7 @@ buildFeatures {
 * 可观察对象：BaseObservable
 
 ## DataBindingFragment3 双向数据绑定
+
+## ObservableField vs liveData
+## 两种方式的用法
+## 两种方式的原理

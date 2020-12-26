@@ -6,6 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment">
 
+    <LinearLayout
+        android:id="@+id/llBanner"
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toTopOf="@+id/btnToBinding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.youth.banner.Banner
+            xmlns:banner="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            banner:banner_indicator_normal_color="@android:color/white"
+            banner:banner_indicator_selected_color="@color/colorPrimary"
+            banner:banner_radius="5dp" />
+
+        <com.youth.banner.indicator.RoundLinesIndicator
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
     <Button
         android:id="@+id/btnToBinding"
         android:layout_width="wrap_content"
@@ -14,7 +44,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnToWorkManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/llBanner" />
 
     <Button
         android:id="@+id/btnToWorkManager"
