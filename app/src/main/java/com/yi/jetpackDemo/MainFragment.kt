@@ -6,15 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.yi.jetpackDemo.banner.HomeBannerAdapter
+import com.yi.jetpackDemo.banner.HomeBannerBean
+import com.yi.jetpackDemo.banner.getResImgs
 import com.yi.jetpackDemo.lunchModel.ActivityA
+import com.youth.banner.listener.OnBannerListener
 import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
  * mainFragment 导航入口
  */
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), OnBannerListener<HomeBannerBean> {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,8 +53,11 @@ class MainFragment : Fragment() {
 
     private fun initBanner() {
         banner.addBannerLifecycleObserver(this)//添加生命周期观察者
-//            .setAdapter(new BannerExampleAdapter (DataBean.getTestData()))
+            .setAdapter(HomeBannerAdapter(HomeBannerBean().getResImgs(), this))
             .setIndicator(indicator, false)
     }
 
+    override fun OnBannerClick(data: HomeBannerBean?, position: Int) {
+        Toast.makeText(context, data?.title, Toast.LENGTH_SHORT).show()
+    }
 }

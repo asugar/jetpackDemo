@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/llBanner"
         android:layout_width="match_parent"
-        android:layout_height="146dp"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:overScrollMode="never"
@@ -18,19 +18,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.youth.banner.Banner
-            xmlns:banner="http://schemas.android.com/apk/res-auto"
+        <com.youth.banner.Banner xmlns:banner="http://schemas.android.com/apk/res-auto"
             android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            banner:banner_indicator_normal_color="@android:color/white"
-            banner:banner_indicator_selected_color="@color/colorPrimary"
-            banner:banner_radius="5dp" />
+            android:layout_height="130dp"
+            banner:banner_indicator_height="2dp"
+            banner:banner_indicator_normal_color="#33000000"
+            banner:banner_indicator_normal_width="8dp"
+            banner:banner_indicator_selected_color="#4B59D7"
+            banner:banner_indicator_selected_width="14dp"
+            banner:banner_loop_time="10000"
+            banner:banner_radius="1dp" />
 
         <com.youth.banner.indicator.RoundLinesIndicator
             android:id="@+id/indicator"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="8dp"
+            android:layout_marginTop="6dp"
             android:visibility="visible" />
 
     </LinearLayout>
