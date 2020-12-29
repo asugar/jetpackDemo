@@ -22,6 +22,9 @@
         <action
             android:id="@+id/toRoomFragment"
             app:destination="@id/RoomFragment" />
+        <action
+            android:id="@+id/toSlidingConflictFragment"
+            app:destination="@id/SlidingConflictFragment" />
     </fragment>
 
     <!--room begin-->
@@ -105,5 +108,16 @@
             app:destination="@id/MainFragment" />
     </fragment>
     <!--binding end-->
+
+    <!--   SlidingConflict begin -->
+    <fragment
+        android:id="@+id/SlidingConflictFragment"
+        android:name="com.yi.jetpackDemo.slidingConflict.SlidingConflictFragment"
+        android:label="SlidingConflictFragment"
+        tools:layout="@layout/fragment_sliding_conflict">
+
+    </fragment>
+
+    <!--   SlidingConflict end -->
 
 </navigation>

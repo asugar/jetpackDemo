@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.yi.jetpackDemo.banner.HomeBannerAdapter
 import com.yi.jetpackDemo.banner.HomeBannerBean
+import com.yi.jetpackDemo.banner.HomeBannerJumpType
 import com.yi.jetpackDemo.banner.getResImgs
 import com.yi.jetpackDemo.lunchModel.ActivityA
 import com.youth.banner.listener.OnBannerListener
@@ -58,6 +59,16 @@ class MainFragment : Fragment(), OnBannerListener<HomeBannerBean> {
     }
 
     override fun OnBannerClick(data: HomeBannerBean?, position: Int) {
-        Toast.makeText(context, data?.title, Toast.LENGTH_SHORT).show()
+        data?.let { dt ->
+            when (dt.jumpType) {
+                HomeBannerJumpType.SLIDING_CONFLICT -> {
+                    findNavController().navigate(R.id.toSlidingConflictFragment)
+                }
+                else -> {
+                    Toast.makeText(context, dt.title, Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }
     }
 }

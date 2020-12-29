@@ -68,7 +68,6 @@ class HomeBannerAdapter(
         fun onBindView(data: HomeBannerBean?, listener: OnBannerListener<HomeBannerBean>?) {
             data?.let { dt ->
                 binding.data = dt
-//                binding.iv.setImageResource(dt.imgRes)
                 itemView.setOnClickListener {
                     listener?.OnBannerClick(dt, getRealPosition(adapterPosition))
                 }

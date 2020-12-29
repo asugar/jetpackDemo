@@ -6,15 +6,25 @@ import com.yi.jetpackDemo.R
  * bannerAdapter使用的实体类
  */
 enum class HomeBannerViewType(val value: Int) {
+    DEFALUT_HOLDER(0),
     IMAGE_HOLDER(1),
     TITLE_HOLDER(2)
+}
+
+/**
+ * bannerAdapter的跳转类型
+ */
+enum class HomeBannerJumpType(val type: Int) {
+    DEFALU_JUMPT(0),
+    SLIDING_CONFLICT(1)
 }
 
 data class HomeBannerBean(
     var imgRes: Int = 0,
     var imgUrl: String = "",
     var title: String = "",
-    var viewType: HomeBannerViewType = HomeBannerViewType.IMAGE_HOLDER
+    var viewType: HomeBannerViewType = HomeBannerViewType.DEFALUT_HOLDER,
+    var jumpType: HomeBannerJumpType = HomeBannerJumpType.DEFALU_JUMPT
 ) {
 
 }
@@ -26,13 +36,14 @@ fun HomeBannerBean.getResImgs(): List<HomeBannerBean> {
             R.mipmap.image1,
             "",
             "slidingConflict",
-            HomeBannerViewType.TITLE_HOLDER
+            HomeBannerViewType.TITLE_HOLDER,
+            HomeBannerJumpType.SLIDING_CONFLICT
         )
     )
-    list.add(HomeBannerBean(R.mipmap.image2, "", "other", HomeBannerViewType.TITLE_HOLDER))
-    list.add(HomeBannerBean(R.mipmap.image3, "", "other", HomeBannerViewType.TITLE_HOLDER))
-    list.add(HomeBannerBean(R.mipmap.image4, "", "other", HomeBannerViewType.TITLE_HOLDER))
-    list.add(HomeBannerBean(R.mipmap.image5, "", "other", HomeBannerViewType.TITLE_HOLDER))
-    list.add(HomeBannerBean(R.mipmap.image6, "", "other", HomeBannerViewType.TITLE_HOLDER))
+    list.add(HomeBannerBean(R.mipmap.image2, "", "other"))
+    list.add(HomeBannerBean(R.mipmap.image3, "", "other"))
+    list.add(HomeBannerBean(R.mipmap.image4, "", "other"))
+    list.add(HomeBannerBean(R.mipmap.image5, "", "other"))
+    list.add(HomeBannerBean(R.mipmap.image6, "", "other"))
     return list
 }
