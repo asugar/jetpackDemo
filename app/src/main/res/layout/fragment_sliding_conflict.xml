@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.yi.jetpackDemo.slidingConflict.view.MyRecycleView
             android:id="@+id/rvVertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

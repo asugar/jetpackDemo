@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="this is title" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.yi.jetpackDemo.slidingConflict.view.MyRecycleView
             android:id="@+id/rvHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

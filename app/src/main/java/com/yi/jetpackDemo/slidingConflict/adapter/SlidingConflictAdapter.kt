@@ -9,7 +9,6 @@ import com.yi.jetpackDemo.slidingConflict.bean.SlidingConflictBean
 class SlidingConflictAdapter(val datas: List<SlidingConflictBean>?) :
     RecyclerView.Adapter<SlidingConflictAdapter.SlidingConflictHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlidingConflictHolder {
         return SlidingConflictHolder(
             ItemSlidingConflictVerticalBinding.inflate(
@@ -34,6 +33,7 @@ class SlidingConflictAdapter(val datas: List<SlidingConflictBean>?) :
         fun onBindView(data: SlidingConflictBean?) {
             data?.let { dt ->
                 binding.data = dt
+                binding.rvHorizontal.setViewFlag(2)
                 binding.rvHorizontal.adapter = SlidingConflictItemAdapter(dt.items)
             }
         }

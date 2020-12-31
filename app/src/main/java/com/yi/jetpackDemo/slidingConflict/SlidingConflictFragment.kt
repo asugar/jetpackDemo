@@ -9,6 +9,8 @@ import com.yi.jetpackDemo.databinding.FragmentSlidingConflictBinding
 import com.yi.jetpackDemo.slidingConflict.adapter.SlidingConflictAdapter
 import com.yi.jetpackDemo.slidingConflict.bean.getTestDatas
 
+const val SCTag = "scTag"
+
 /**
  * 测试滑动冲突问题
  */
