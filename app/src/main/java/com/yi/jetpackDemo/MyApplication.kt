@@ -1,12 +1,14 @@
 package com.yi.jetpackDemo
 
 import android.app.Application
+import android.os.Process
 import androidx.multidex.MultiDex
 import com.facebook.stetho.Stetho
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
+import kotlin.system.exitProcess
 
 class MyApplication : Application() {
 
@@ -54,4 +56,28 @@ class MyApplication : Application() {
         }
     }
 
+    override fun onLowMemory() {
+        super.onLowMemory()
+        try {
+            Logger.t(tag).d("onLowMemory invoked")
+        } catch (e: Exception) {
+            Logger.t(tag).e("onLowMemory ${e.message}")
+        }
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        try {
+            Logger.t(tag).d("onLowMemory invoked level= $level")
+            if (level >= TRIM_MEMORY_MODERATE) { //内存不足，并且该进程在后台进程列表的中部
+                //主动杀进程，防止内存回收后，打开应用加载静态变量时为null
+                Logger.t(tag).d("onLowMemory invoked kill self")
+                Process.killProcess(Process.myPid())
+                exitProcess(0)
+                System.gc()
+            }
+        } catch (e: Exception) {
+            Logger.t(tag).e("onTrimMemory ${e.message}")
+        }
+    }
 }

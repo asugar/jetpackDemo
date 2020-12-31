@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.orhanobut.logger.Logger
+import com.yi.jetpackDemo.killed.API
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +39,11 @@ class MainActivity : AppCompatActivity() {
 
         val businessTags = getBusinessTags()
         Logger.t(tag).d("businessTags $businessTags")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        API.init("")
     }
 
     private fun getBusinessTags(): List<String> {

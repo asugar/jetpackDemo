@@ -7,8 +7,10 @@ import android.os.PersistableBundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.orhanobut.logger.Logger
 import com.yi.jetpackDemo.R
 import com.yi.jetpackDemo.databinding.ActivityABinding
+import com.yi.jetpackDemo.killed.API
 import com.yi.jetpackDemo.lunchModel.fragmentLife.FragmentA
 
 /**
@@ -38,10 +40,16 @@ class ActivityA : AppCompatActivity(), OnActivityClickListener {
     private fun initView() {
         mBinding.tvSwitch.setOnClickListener {
             createFragment()
+//            testKilledProcess()
         }
         mBinding.tvAdd.setOnClickListener {
             addFragment()
         }
+    }
+
+    private fun testKilledProcess() {
+        val str = API.create()
+        Logger.t("MyApplication").d("API.create() $str")
     }
 
     private fun addFragment() {
