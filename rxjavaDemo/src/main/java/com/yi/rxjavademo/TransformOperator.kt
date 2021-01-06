@@ -100,7 +100,7 @@ fun mainFlatMap() {
 
 fun mainConcatMap() {
     /**
-     * concatMap 类似 flatMap 区别：按照顺序执行
+     *  concatMap 类似 flatMap 区别：按照顺序执行
      */
     thread {
         val dis = Observable.fromIterable(persons)
