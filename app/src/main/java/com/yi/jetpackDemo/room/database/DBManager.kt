@@ -16,7 +16,7 @@ object DBManager {
     /**
      * 数据库升级
      * 简单的；修改表结构
-     * 复杂的：新建表->插入数据->修改表名
+     * 复杂的：新建表->插入数据->删除旧表
      */
     val MIGRATION_1_2 = object : Migration(1, 2) {
         override fun migrate(database: SupportSQLiteDatabase) {

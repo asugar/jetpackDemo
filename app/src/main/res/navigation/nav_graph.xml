@@ -22,9 +22,14 @@
         <action
             android:id="@+id/toRoomFragment"
             app:destination="@id/RoomFragment" />
+
         <action
             android:id="@+id/toSlidingConflictFragment"
             app:destination="@id/SlidingConflictFragment" />
+
+        <action
+            android:id="@+id/toRxJavaFragment"
+            app:destination="@id/RxJavaFragment" />
     </fragment>
 
     <!--room begin-->
@@ -119,5 +124,13 @@
     </fragment>
 
     <!--   SlidingConflict end -->
+
+    <fragment
+        android:id="@+id/RxJavaFragment"
+        android:name="com.yi.jetpackDemo.rxjava.RxJavaFragment"
+        android:label="RxJavaFragment"
+        tools:layout="@layout/fragment_rxjava">
+
+    </fragment>
 
 </navigation>

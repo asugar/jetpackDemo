@@ -64,6 +64,9 @@ class MainFragment : Fragment(), OnBannerListener<HomeBannerBean> {
                 HomeBannerJumpType.SLIDING_CONFLICT -> {
                     findNavController().navigate(R.id.toSlidingConflictFragment)
                 }
+                HomeBannerJumpType.RXJAVA -> {
+                    findNavController().navigate(R.id.toRxJavaFragment)
+                }
                 else -> {
                     Toast.makeText(context, dt.title, Toast.LENGTH_SHORT).show()
                 }

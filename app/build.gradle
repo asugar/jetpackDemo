@@ -159,6 +159,13 @@ dependencies {
     // banner
     implementation 'com.youth.banner:banner:2.1.0'
 
+    // eventBus
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.16'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
 }
 
 static def generateApkTime() {

@@ -14,8 +14,16 @@ class MyApplication : Application() {
 
     private val tag = "MyApplication"
 
+    companion object {
+        private lateinit var mApplication: Application
+        fun getApplication(): Application {
+            return mApplication
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
+        mApplication = this
         MultiDex.install(this)
         initStetho()
         initLogger()
