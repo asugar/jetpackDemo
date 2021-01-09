@@ -8,6 +8,13 @@ import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
+import com.yi.jetpackDemo.retrofit.manager.CacheInterceptor
+import com.yi.jetpackDemo.retrofit.manager.HeaderInterceptor
+import com.yi.jetpackDemo.retrofit.manager.MultBaseUrlInterceptor
+import com.yi.jetpackDemo.retrofit.manager.RetrofitManager
+import okhttp3.Cache
+import okhttp3.logging.HttpLoggingInterceptor
+import java.io.File
 import kotlin.system.exitProcess
 
 class MyApplication : Application() {
@@ -15,6 +22,8 @@ class MyApplication : Application() {
     private val tag = "MyApplication"
 
     companion object {
+        const val APP_HOST = "https://schoolmaster.aixuexi.com/godfather/"
+        const val TRAIN_HOST = "http://train.aixuexi.com/"
         private lateinit var mApplication: Application
         fun getApplication(): Application {
             return mApplication
@@ -27,8 +36,36 @@ class MyApplication : Application() {
         MultiDex.install(this)
         initStetho()
         initLogger()
+        initRetrofit()
         Logger.t(tag).d("onCreate ")
     }
+
+    private fun initRetrofit() {
+        val cache = Cache(
+            File(getApplication().cacheDir, "responses"), 50 * 1024 * 1024
+        )
+        RetrofitManager.initRetrofit(
+            APP_HOST,
+            cache = cache,
+            loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message ->
+                Logger.t("http").d(message)
+            }).setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE),
+            cacheInterceptor = CacheInterceptor(),
+            headerInterceptor = object : HeaderInterceptor() {
+                override fun headers(): Map<String, Any>? {
+                    val map = HashMap<String, Any>()
+                    map["ptaxxxzapp"] =
+                        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMTk1MDg4NjA1MzgxMDE3NjYiLCJidXNpbmVzc1BsYXRmb3JtIjoiYWl4dWV4aSIsImlzcyI6InBhc3Nwb3J0U2VydmljZSIsImp3dF9yZWZfdG9rZW5fZXhwaXJlIjoxNjEwNTM1MTE3Mzc5LCJleHAiOjE2MTA1MzUxMTcsImlhdCI6MTYxMDQ0ODcxNywibG9naW5TeXN0ZW0iOiJwdGF4eHh6YXBwIiwianRpIjoiOWFmYzhhMzM3MjJhNDlhN2IyODI0YmI5OTY5NTRiYzUiLCJzSWQiOiIyNWUwMjM1YzE2ZTY0NmZhOGFjODVlOTY1MTkwYmZiNiJ9.dVynlOS4g2XMEMZLndnfGmqE1IDF7UvSykXZDxWNRAA"
+                    map["userId"] = "1537885"
+                    return map
+                }
+            },
+            domainInterceptor = MultBaseUrlInterceptor(),
+            networkInterceptors = * arrayOf()//StethoInterceptor(),
+        )
+        RetrofitManager.setHosts(TRAIN_HOST)
+    }
+
 
     /**
      * 初始化Logger

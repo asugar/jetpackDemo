@@ -1,0 +1,55 @@
+package com.yi.jetpackDemo.retrofit
+
+import com.yi.jetpackDemo.MyApplication
+import com.yi.jetpackDemo.retrofit.entiry.AppIndexDataResp
+import com.yi.jetpackDemo.retrofit.entiry.Result
+import com.yi.jetpackDemo.retrofit.entiry.TrainMonth
+import com.yi.jetpackDemo.retrofit.manager.CACHE_QUERY
+import com.yi.jetpackDemo.retrofit.manager.HOST_KEY
+import io.reactivex.Observable
+import retrofit2.http.*
+
+interface RetrofitService {
+
+    @GET("app/indexApp/getAppIndexData")
+    fun getAppIndexData(
+        @Query("insId") insId: String,
+        @Query(CACHE_QUERY) cache: Boolean = false
+    ): Observable<Result<AppIndexDataResp>>
+
+    @Headers("$HOST_KEY:${MyApplication.TRAIN_HOST}")
+    @GET("thewolverine/trainCalendar/getMonthListForApp")
+    fun getAppWithHosts(): Observable<Result<List<TrainMonth>>>
+
+    /**
+     * 使用@Url
+     */
+    @GET
+    fun getAppWithUrl(
+        @Url url: String,
+        @Query("") insId: String?
+    ): Observable<Result<List<TrainMonth>>>
+
+
+    /**
+     * 此方法处理h5 get请求
+     */
+    @GET
+    fun refreshH5Get(
+        @Url url: String,
+        @QueryMap map: Map<String, String>
+    ): Observable<Result<Any>>
+
+    /**
+     * 此方法处理h5 post请求
+     */
+    @FormUrlEncoded
+    @POST
+    fun refreshH5Post(
+        @Url url: String,
+        @FieldMap params: Map<String, String>
+    ): Observable<Result<Any>>
+
+//    @POST("/")
+//    fun login(@Body login: LoginReq): Observable<Result<LoginResp>>
+}

@@ -30,6 +30,10 @@
         <action
             android:id="@+id/toRxJavaFragment"
             app:destination="@id/RxJavaFragment" />
+
+        <action
+            android:id="@+id/toRetrofitFragment"
+            app:destination="@id/RetrofitFragment" />
     </fragment>
 
     <!--room begin-->
@@ -130,6 +134,14 @@
         android:name="com.yi.jetpackDemo.rxjava.RxJavaFragment"
         android:label="RxJavaFragment"
         tools:layout="@layout/fragment_rxjava">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/RetrofitFragment"
+        android:name="com.yi.jetpackDemo.retrofit.RetrofitFragment"
+        android:label="RetrofitFragment"
+        tools:layout="@layout/fragment_retrofit">
 
     </fragment>
 
