@@ -67,6 +67,9 @@ class MainFragment : Fragment(), OnBannerListener<HomeBannerBean> {
                 HomeBannerJumpType.RXJAVA -> {
                     findNavController().navigate(R.id.toRxJavaFragment)
                 }
+                HomeBannerJumpType.RETROFIT -> {
+                    findNavController().navigate(R.id.toRetrofitFragment)
+                }
                 else -> {
                     Toast.makeText(context, dt.title, Toast.LENGTH_SHORT).show()
                 }

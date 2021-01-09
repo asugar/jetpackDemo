@@ -1,11 +1,30 @@
-# 引入retrofit
+# 引入retrofit retrofit converter-gson adapter-rxjava2  okhttp3 gson
 ```groovy
-
+implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+implementation("com.squareup.retrofit2:converter-gson:$retrofit2_version") {
+    exclude group: 'com.squareup.okhttp3'
+}
+implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version") {
+    exclude group: 'com.squareup.okhttp3'
+}
+def okhttp3_version = "3.8.1"
+implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
+implementation("com.squareup.okhttp3:logging-interceptor:$okhttp3_version") {
+    exclude group: 'com.android.support'
+    exclude group: 'com.squareup.okhttp3'
+}
+implementation("com.squareup.okhttp3:okhttp-urlconnection:$okhttp3_version") {
+    exclude group: 'com.squareup.okhttp3'
+}
 ```
 
+# 基本网络请求 -- ok
+
+# header -- ok
+
+# cache 
 
 # 解决多base得网络
-
 
 # 处理h5网络请求
 

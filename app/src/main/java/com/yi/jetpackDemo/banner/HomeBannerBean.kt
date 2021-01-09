@@ -17,7 +17,8 @@ enum class HomeBannerViewType(val value: Int) {
 enum class HomeBannerJumpType(val type: Int) {
     DEFALU_JUMPT(0),
     SLIDING_CONFLICT(1),
-    RXJAVA(2)
+    RXJAVA(2),
+    RETROFIT(3)
 }
 
 data class HomeBannerBean(
@@ -50,7 +51,15 @@ fun HomeBannerBean.getResImgs(): List<HomeBannerBean> {
             HomeBannerJumpType.RXJAVA
         )
     )
-    list.add(HomeBannerBean(R.mipmap.image3, "", "other"))
+    list.add(
+        HomeBannerBean(
+            R.mipmap.image3,
+            "",
+            "Retrofit",
+            HomeBannerViewType.TITLE_HOLDER,
+            HomeBannerJumpType.RETROFIT
+        )
+    )
     list.add(HomeBannerBean(R.mipmap.image4, "", "other"))
     list.add(HomeBannerBean(R.mipmap.image5, "", "other"))
     list.add(HomeBannerBean(R.mipmap.image6, "", "other"))

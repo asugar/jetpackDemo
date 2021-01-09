@@ -4,10 +4,17 @@ import android.app.Application
 import android.os.Process
 import androidx.multidex.MultiDex
 import com.facebook.stetho.Stetho
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
+import com.yi.jetpackDemo.retrofit.manager.CacheInterceptor
+import com.yi.jetpackDemo.retrofit.manager.HeaderInterceptor
+import com.yi.jetpackDemo.retrofit.manager.RetrofitManager
+import okhttp3.Cache
+import okhttp3.logging.HttpLoggingInterceptor
+import java.io.File
 import kotlin.system.exitProcess
 
 class MyApplication : Application() {
@@ -27,8 +34,35 @@ class MyApplication : Application() {
         MultiDex.install(this)
         initStetho()
         initLogger()
+        initRetrofit()
         Logger.t(tag).d("onCreate ")
     }
+
+    private val HTTPS_HOST = "https://schoolmaster.aixuexi.com/godfather/"
+    private fun initRetrofit() {
+        val cache = Cache(
+            File(getApplication().cacheDir, "responses"), 50 * 1024 * 1024
+        )
+        RetrofitManager.initRetrofit(
+            HTTPS_HOST,
+            cache = cache,
+            loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message ->
+                Logger.t("http").d(message)
+            }).setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE),
+            cacheInterceptor = CacheInterceptor(),
+            headerInterceptor = object : HeaderInterceptor() {
+                override fun headers(): Map<String, Any>? {
+                    val map = HashMap<String, Any>()
+                    map["ptaxxxzapp"] =
+                        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMTk1MDgyMDk0MjI3Mzc0ODIiLCJidXNpbmVzc1BsYXRmb3JtIjoiYWl4dWV4aSIsImlzcyI6InBhc3Nwb3J0U2VydmljZSIsImp3dF9yZWZfdG9rZW5fZXhwaXJlIjoxNjEwMjYyOTA1NTgxLCJleHAiOjE2MTAyNjI5MDUsImlhdCI6MTYxMDE3NjUwNSwibG9naW5TeXN0ZW0iOiJwdGF4eHh6YXBwIiwianRpIjoiN2ExZWM5Njk3MTZmNDQ4OGFlMWU5MDY5ZWUwNTkxMTMiLCJzSWQiOiI0NDkxZGU5YjNhMmY0Y2IzYWM0YTQwOGE4ZDdkMDJkYSJ9.kUvV1gAiwUMQZNB3ne04cUId29JCgRs6vz2oqtTebi0"
+                    map["userId"] = "2416522"
+                    return map
+                }
+            },
+            networkInterceptors = *arrayOf(StethoInterceptor())
+        )
+    }
+
 
     /**
      * 初始化Logger

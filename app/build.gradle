@@ -137,7 +137,10 @@ dependencies {
 
     // 添加stecho库 查看数据库，打印网络日志
     implementation 'com.facebook.stetho:stetho:1.5.1'
-    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+    implementation('com.facebook.stetho:stetho-okhttp3:1.5.1') {
+        exclude group: 'com.android.support'
+        exclude group: 'com.squareup.okhttp3'
+    }
     implementation 'com.facebook.stetho:stetho-js-rhino:1.5.1'
 
     // multidex
@@ -165,6 +168,25 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.16'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    // retrofit dependence okhttp okio
+    def retrofit2_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit2_version") {
+        exclude group: 'com.squareup.okhttp3'
+    }
+    implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version") {
+        exclude group: 'com.squareup.okhttp3'
+    }
+    def okhttp3_version = "3.8.1"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttp3_version") {
+        exclude group: 'com.android.support'
+        exclude group: 'com.squareup.okhttp3'
+    }
+    implementation("com.squareup.okhttp3:okhttp-urlconnection:$okhttp3_version") {
+        exclude group: 'com.squareup.okhttp3'
+    }
 
 }
 
