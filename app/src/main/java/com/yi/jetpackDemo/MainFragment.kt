@@ -70,6 +70,9 @@ class MainFragment : Fragment(), OnBannerListener<HomeBannerBean> {
                 HomeBannerJumpType.RETROFIT -> {
                     findNavController().navigate(R.id.toRetrofitFragment)
                 }
+                HomeBannerJumpType.LIFE_CYCLE -> {
+                    findNavController().navigate(R.id.toLifeCycleFragment)
+                }
                 else -> {
                     Toast.makeText(context, dt.title, Toast.LENGTH_SHORT).show()
                 }

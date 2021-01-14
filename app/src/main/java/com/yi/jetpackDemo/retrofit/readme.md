@@ -41,9 +41,6 @@ fun getAppWithUrl(
 
 * 使用封好的三方库：https://juejin.cn/post/6844903635126583303
 
-# OkHttpClient 原理
-
-
 # 处理h5网络请求 -- ok 使用rul注解
 ```
 /**
@@ -75,3 +72,6 @@ h5请求网络，使用app得能力，有个接口使用了一个数组，发现
 
 gson解析后发现int -->Double 了，需要使用typeAdapter处理 -- ok
 自定义解析可以处理部分问题，但是解析规则不能时无线嵌套的
+
+
+# OkHttpClient 原理

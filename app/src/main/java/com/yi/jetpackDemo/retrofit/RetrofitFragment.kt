@@ -43,7 +43,7 @@ class RetrofitFragment : Fragment() {
 
     private fun initView() {
         binding?.btnNet?.setOnClickListener {
-            mService.getAppIndexData("603",true)
+            mService.getAppIndexData("603", true)
                 .map(ResultFunc())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

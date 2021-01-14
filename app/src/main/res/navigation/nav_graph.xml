@@ -34,6 +34,10 @@
         <action
             android:id="@+id/toRetrofitFragment"
             app:destination="@id/RetrofitFragment" />
+
+        <action
+            android:id="@+id/toLifeCycleFragment"
+            app:destination="@id/LifeCycleFragment" />
     </fragment>
 
     <!--room begin-->
@@ -142,6 +146,14 @@
         android:name="com.yi.jetpackDemo.retrofit.RetrofitFragment"
         android:label="RetrofitFragment"
         tools:layout="@layout/fragment_retrofit">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/LifeCycleFragment"
+        android:name="com.yi.jetpackDemo.lifecycle.LifeCycleFragment"
+        android:label="LifeCycleFragment"
+        tools:layout="@layout/fragment_lifecycle">
 
     </fragment>
 

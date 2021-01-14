@@ -18,7 +18,8 @@ enum class HomeBannerJumpType(val type: Int) {
     DEFALU_JUMPT(0),
     SLIDING_CONFLICT(1),
     RXJAVA(2),
-    RETROFIT(3)
+    RETROFIT(3),
+    LIFE_CYCLE(4),
 }
 
 data class HomeBannerBean(
@@ -60,7 +61,15 @@ fun HomeBannerBean.getResImgs(): List<HomeBannerBean> {
             HomeBannerJumpType.RETROFIT
         )
     )
-    list.add(HomeBannerBean(R.mipmap.image4, "", "other"))
+    list.add(
+        HomeBannerBean(
+            R.mipmap.image4,
+            "",
+            "LifeCycle",
+            HomeBannerViewType.TITLE_HOLDER,
+            HomeBannerJumpType.LIFE_CYCLE
+        )
+    )
     list.add(HomeBannerBean(R.mipmap.image5, "", "other"))
     list.add(HomeBannerBean(R.mipmap.image6, "", "other"))
     return list
