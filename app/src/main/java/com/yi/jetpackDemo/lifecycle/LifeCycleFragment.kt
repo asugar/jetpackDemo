@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.yi.jetpackDemo.databinding.FragmentLifecycleBinding
 
+const val LIFECYCLE_TAG = "LifeCycleFragment"
+
 class LifeCycleFragment : Fragment() {
 
     private var binding: FragmentLifecycleBinding? = null
@@ -22,6 +24,7 @@ class LifeCycleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        lifecycle.addObserver(MyObserver())
     }
 
     override fun onDestroyView() {
