@@ -90,6 +90,7 @@ object RetrofitManager {
                     mLoggingInterceptor?.let {
                         clientBuilder.addInterceptor(it)
                     }
+                    clientBuilder.addInterceptor(PerformanceLogInterceptor())
                     mHeaderInterceptor?.let {
                         clientBuilder.addInterceptor(it)
                     }

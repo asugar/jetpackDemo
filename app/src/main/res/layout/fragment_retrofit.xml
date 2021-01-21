@@ -56,6 +56,12 @@
                 android:layout_height="wrap_content"
                 android:text="refresh_h5_post" />
 
+            <Button
+                android:id="@+id/btnPerformanceLog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="performance_log_post" />
+
             <TextView
                 android:id="@+id/tvNetContent"
                 android:layout_width="match_parent"

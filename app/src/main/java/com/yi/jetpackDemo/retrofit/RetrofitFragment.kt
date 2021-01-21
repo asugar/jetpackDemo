@@ -10,13 +10,19 @@ import com.google.gson.GsonBuilder
 import com.orhanobut.logger.Logger
 import com.yi.jetpackDemo.MyApplication
 import com.yi.jetpackDemo.databinding.FragmentRetrofitBinding
+import com.yi.jetpackDemo.retrofit.entiry.CommonFieldsLog
+import com.yi.jetpackDemo.retrofit.entiry.EventListItem
+import com.yi.jetpackDemo.retrofit.entiry.PerformanceLog
 import com.yi.jetpackDemo.retrofit.gson.H5ReqTypeAdapter
 import com.yi.jetpackDemo.retrofit.gson.H5RequestBody
 import com.yi.jetpackDemo.retrofit.manager.ResultFunc
 import com.yi.jetpackDemo.retrofit.manager.RetrofitManager
+import com.yi.jetpackDemo.retrofit.manager.async
 import com.yi.jetpackDemo.retrofit.manager.exception.ResultException
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.nio.charset.Charset
+import java.security.MessageDigest
 
 const val RETROFIT_TAG = "RetrofitFragment"
 
@@ -121,7 +127,41 @@ class RetrofitFragment : Fragment() {
             refreshH5Post()
         }
 
+        binding?.btnPerformanceLog?.setOnClickListener {
+            uploadLog()
+        }
 
+    }
+
+    /**
+     * 测试日志上传
+     *
+     */
+    private fun uploadLog() {
+        val url = "https://api-idata.aixuexi.com/collectWeb/app_log/save"
+        val body = PerformanceLog()
+        body.commonFields = CommonFieldsLog("1", "2", "2", "2", "2", "2", "2")
+        body.eventList = listOf(EventListItem("1", 2, "33", "200", "good"))
+        val json = Gson().toJson(body)
+        val md5 =
+            MessageDigest.getInstance("MD5").digest(json.toByteArray(Charset.defaultCharset()))
+        Logger.t(RETROFIT_TAG).d("uploadLog json= $json md5= ${md5.toString()}")
+        val dispose = mService.uploadLogPost(url, body)
+            .async()
+            .subscribe({
+                Logger.t(RETROFIT_TAG).d("uploadLog onNext")
+                showNetContent(it.toString())
+            }, {
+                if (it is ResultException) {
+                    Logger.t(RETROFIT_TAG)
+                        .d("uploadLog onError ${it.getErrorCode()} ${it.message}")
+                } else {
+                    Logger.t(RETROFIT_TAG).d("uploadLog onError ${it.message} ")
+                }
+                showNetContent(it.toString())
+            }, {
+                Logger.t(RETROFIT_TAG).d("uploadLog onComplete")
+            })
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.yi.jetpackDemo
 
 import android.os.Bundle
+import android.os.Debug
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MotionEvent
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Debug.startMethodTracing("homeView")
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(findViewById(R.id.toolbar))
@@ -89,5 +91,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        Debug.stopMethodTracing()
     }
 }

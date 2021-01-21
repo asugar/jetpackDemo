@@ -2,6 +2,7 @@ package com.yi.jetpackDemo.retrofit
 
 import com.yi.jetpackDemo.MyApplication
 import com.yi.jetpackDemo.retrofit.entiry.AppIndexDataResp
+import com.yi.jetpackDemo.retrofit.entiry.PerformanceLog
 import com.yi.jetpackDemo.retrofit.entiry.Result
 import com.yi.jetpackDemo.retrofit.entiry.TrainMonth
 import com.yi.jetpackDemo.retrofit.manager.CACHE_QUERY
@@ -48,6 +49,12 @@ interface RetrofitService {
     fun refreshH5Post(
         @Url url: String,
         @FieldMap params: Map<String, String>
+    ): Observable<Result<Any>>
+
+    @POST
+    fun uploadLogPost(
+        @Url url: String,
+        @Body body: PerformanceLog
     ): Observable<Result<Any>>
 
 //    @POST("/")
