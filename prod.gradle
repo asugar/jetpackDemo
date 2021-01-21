@@ -1,0 +1,11 @@
+task downloadRes() {
+    println("downloadRes ")
+    def httpServerUrl = "http://10.31.2.234:8080/mockserver"
+    exec {
+        commandLine('curl', '-o', './src/main/assets/prod.zip', httpServerUrl + '/aixuexiapp/res/schoolmaster/prod.zip')
+    }
+
+    exec {
+        commandLine 'curl', '-o', './src/main/assets/react.zip', httpServerUrl + '/aixuexiapp/res/schoolmaster/react.zip'
+    }
+}

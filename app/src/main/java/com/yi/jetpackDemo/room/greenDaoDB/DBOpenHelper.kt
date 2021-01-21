@@ -9,6 +9,9 @@ import org.greenrobot.greendao.database.Database
  */
 class DBOpenHelper : DaoMaster.DevOpenHelper {
 
+    private val V_1 = 1
+    private val V_2 = 2
+
     companion object {
         private val NAME = "jetpack-db"
 
@@ -28,6 +31,7 @@ class DBOpenHelper : DaoMaster.DevOpenHelper {
         }
     }
 
+
     constructor(context: Context, name: String, factory: SQLiteDatabase.CursorFactory?)
             : super(context, name, factory)
 
@@ -37,7 +41,12 @@ class DBOpenHelper : DaoMaster.DevOpenHelper {
     }
 
     override fun onUpgrade(db: Database?, oldVersion: Int, newVersion: Int) {
-        super.onUpgrade(db, oldVersion, newVersion)
+        if (oldVersion < V_2) {
+//            MessageDao.createTable(db, true)
+//            MigrationHelper.migrate(db, MessageDao::class.java)
+        } else {
+            super.onUpgrade(db, oldVersion, newVersion) // 删除所有表，再重新创建所有表
+        }
     }
 
     private fun execSql(db: Database, sql: String) {
