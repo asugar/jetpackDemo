@@ -1,4 +1,4 @@
-package com.yi.jetpackDemo.retrofit.entiry
+package com.yi.jetpackDemo.retrofit.entity
 
 data class TrainMonth(
     var yearMonth: String = "",

@@ -1,6 +1,6 @@
 package com.yi.jetpackDemo.retrofit.manager
 
-import com.yi.jetpackDemo.retrofit.entiry.Result
+import com.yi.jetpackDemo.retrofit.entity.Result
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

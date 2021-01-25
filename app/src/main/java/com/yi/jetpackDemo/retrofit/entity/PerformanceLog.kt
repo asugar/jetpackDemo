@@ -1,4 +1,4 @@
-package com.yi.jetpackDemo.retrofit.entiry
+package com.yi.jetpackDemo.retrofit.entity
 
 /**
  * 性能埋点实体类

@@ -1,10 +1,10 @@
 package com.yi.jetpackDemo.retrofit
 
 import com.yi.jetpackDemo.MyApplication
-import com.yi.jetpackDemo.retrofit.entiry.AppIndexDataResp
-import com.yi.jetpackDemo.retrofit.entiry.PerformanceLog
-import com.yi.jetpackDemo.retrofit.entiry.Result
-import com.yi.jetpackDemo.retrofit.entiry.TrainMonth
+import com.yi.jetpackDemo.retrofit.entity.AppIndexDataResp
+import com.yi.jetpackDemo.retrofit.entity.PerformanceLog
+import com.yi.jetpackDemo.retrofit.entity.Result
+import com.yi.jetpackDemo.retrofit.entity.TrainMonth
 import com.yi.jetpackDemo.retrofit.manager.CACHE_QUERY
 import com.yi.jetpackDemo.retrofit.manager.HOST_KEY
 import io.reactivex.Observable
@@ -55,6 +55,12 @@ interface RetrofitService {
     fun uploadLogPost(
         @Url url: String,
         @Body body: PerformanceLog
+    ): Observable<Result<Any>>
+
+    @POST
+    fun uploadLogPostWithString(
+        @Url url: String,
+        @Body body: String
     ): Observable<Result<Any>>
 
 //    @POST("/")

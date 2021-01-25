@@ -1,4 +1,4 @@
-package com.yi.jetpackDemo.retrofit.entiry
+package com.yi.jetpackDemo.retrofit.entity
 
 import android.text.TextUtils
 import java.io.Serializable

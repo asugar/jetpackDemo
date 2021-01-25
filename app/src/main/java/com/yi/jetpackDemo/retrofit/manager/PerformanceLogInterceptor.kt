@@ -14,7 +14,7 @@ import java.nio.charset.Charset
  * 按照性能埋点安全验证方法
  * http://iwork.gaosiedu.com/pages/viewpage.action?pageId=100995211
  */
-class PerformanceLogInterceptor : Interceptor {
+open class PerformanceLogInterceptor : Interceptor {
 
 //    APP
 //    hdfiosafjisoadjfpsa23782kdfmds
@@ -31,16 +31,14 @@ class PerformanceLogInterceptor : Interceptor {
         val bodyStr = buffer.readString(Charset.defaultCharset())
         Logger.t(RETROFIT_TAG)
             .d("PerformanceLogInterceptor body= $bodyStr")
-//        bodyStr = "{\"userId\":\"APP\",\"commonFields\":{\"uid\":\"uiduiduid\",\"deviceId\":\"deviceIddeviceIddeviceId\",\"projectId\":\"projectIdprojectIdprojectId\"},\"eventList\":[{\"eventTime\":2731923123131,\"type\":12,\"url\":\"fdasjdklfa;.dfkass;fa;ls\"}]}"
         val contentMd5 = bodyStr.toMd5()//
 
         Logger.t(RETROFIT_TAG)
-            .d("PerformanceLogInterceptor contentMd5= $contentMd5 ${buffer.md5()}")
+            .d("PerformanceLogInterceptor contentMd5= $contentMd5 ")
 
-//        generatorAuth("POST", "875264590688CA6171F6228AF5BBB3D2", "1610344372000")
-
-        val date = System.currentTimeMillis().toString()
-        builder.addHeader("userId", "APP")
+//        val date = System.currentTimeMillis().toString()
+        val date = "1610608506000"
+        builder.addHeader("keyId", getKeyId())
         builder.addHeader("Date", date)
         builder.addHeader("Authorization", generatorAuth(method, contentMd5, date))
         request = builder.build()
@@ -58,16 +56,20 @@ class PerformanceLogInterceptor : Interceptor {
         val signString = "$method\\n$contentMd5\\n$date"
         Logger.t(RETROFIT_TAG)
             .d("PerformanceLogInterceptor generatorAuth signString= $signString")
-        val signature: String = signString.toHmacSha1("hdfiosafjisoadjfpsa23782kdfmds")
+        val signature: String = signString.toHmacSha1(getSecretKey())
         Logger.t(RETROFIT_TAG)
             .d("PerformanceLogInterceptor generatorAuth signature= $signature")
 
         val afterBase64 = signature.toBase64()
         Logger.t(RETROFIT_TAG)
             .d("PerformanceLogInterceptor generatorAuth afterBase64= $afterBase64")
-        val auth = "LOG".plus("APP").plus(":").plus(afterBase64)
+        val auth = "LOG".plus(getKeyId()).plus(":").plus(afterBase64)
         return auth
     }
 
-    open fun headers(): Map<String, Any>? = null
+    /**
+     * userId是再日志管理中心申请的，不是用户id
+     */
+    open fun getKeyId(): String = ""
+    open fun getSecretKey(): String = ""
 }

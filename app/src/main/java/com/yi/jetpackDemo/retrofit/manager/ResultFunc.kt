@@ -1,6 +1,6 @@
 package com.yi.jetpackDemo.retrofit.manager
 
-import com.yi.jetpackDemo.retrofit.entiry.Result
+import com.yi.jetpackDemo.retrofit.entity.Result
 import com.yi.jetpackDemo.retrofit.manager.exception.ResultException
 import io.reactivex.functions.Function
 

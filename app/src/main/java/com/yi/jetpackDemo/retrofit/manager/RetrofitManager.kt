@@ -23,6 +23,7 @@ object RetrofitManager {
     private var mLoggingInterceptor: Interceptor? = null
     private var mHeaderInterceptor: Interceptor? = null
     private var mDomainInterceptor: Interceptor? = null
+    private var mPerformanceInterceptor: Interceptor? = null
     private var mNetworkInterceptors: MutableList<Interceptor> = ArrayList()
     private val mOkHttpClient by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
         val builder = OkHttpClient.Builder()
@@ -57,6 +58,7 @@ object RetrofitManager {
         cacheInterceptor: Interceptor?,
         headerInterceptor: Interceptor?,
         domainInterceptor: Interceptor?,
+        performanceInterceptor: Interceptor?,
         vararg networkInterceptors: Interceptor?
     ) {
         mBaseUrl = baseUrl
@@ -65,6 +67,7 @@ object RetrofitManager {
         mCacheInterceptor = cacheInterceptor
         mHeaderInterceptor = headerInterceptor
         mDomainInterceptor = domainInterceptor
+        mPerformanceInterceptor = performanceInterceptor
         for (networkInterceptor in networkInterceptors) {
             networkInterceptor?.let {
                 mNetworkInterceptors.add(it)
@@ -90,7 +93,6 @@ object RetrofitManager {
                     mLoggingInterceptor?.let {
                         clientBuilder.addInterceptor(it)
                     }
-                    clientBuilder.addInterceptor(PerformanceLogInterceptor())
                     mHeaderInterceptor?.let {
                         clientBuilder.addInterceptor(it)
                     }
@@ -98,6 +100,9 @@ object RetrofitManager {
                         clientBuilder.addNetworkInterceptor(it)
                     }
                     mDomainInterceptor?.let {
+                        clientBuilder.addInterceptor(it)
+                    }
+                    mPerformanceInterceptor?.let {
                         clientBuilder.addInterceptor(it)
                     }
 

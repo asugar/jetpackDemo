@@ -8,10 +8,7 @@ import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
-import com.yi.jetpackDemo.retrofit.manager.CacheInterceptor
-import com.yi.jetpackDemo.retrofit.manager.HeaderInterceptor
-import com.yi.jetpackDemo.retrofit.manager.MultBaseUrlInterceptor
-import com.yi.jetpackDemo.retrofit.manager.RetrofitManager
+import com.yi.jetpackDemo.retrofit.manager.*
 import okhttp3.Cache
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
@@ -61,6 +58,11 @@ class MyApplication : Application() {
                 }
             },
             domainInterceptor = MultBaseUrlInterceptor(),
+            performanceInterceptor = object : PerformanceLogInterceptor() {
+                override fun getKeyId() = "APP"
+
+                override fun getSecretKey() = "hdfiosafjisoadjfpsa23782kdfmds"
+            },
             networkInterceptors = * arrayOf()//StethoInterceptor(),
         )
         RetrofitManager.setHosts(TRAIN_HOST)
