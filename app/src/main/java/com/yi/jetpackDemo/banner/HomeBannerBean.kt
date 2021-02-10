@@ -20,6 +20,7 @@ enum class HomeBannerJumpType(val type: Int) {
     RXJAVA(2),
     RETROFIT(3),
     LIFE_CYCLE(4),
+    EASY_PERMISSIONS(5)
 }
 
 data class HomeBannerBean(
@@ -70,7 +71,15 @@ fun HomeBannerBean.getResImgs(): List<HomeBannerBean> {
             HomeBannerJumpType.LIFE_CYCLE
         )
     )
-    list.add(HomeBannerBean(R.mipmap.image5, "", "other"))
+    list.add(
+        HomeBannerBean(
+            R.mipmap.image5,
+            "",
+            "EasyPermissions",
+            HomeBannerViewType.TITLE_HOLDER,
+            HomeBannerJumpType.EASY_PERMISSIONS
+        )
+    )
     list.add(HomeBannerBean(R.mipmap.image6, "", "other"))
     return list
 }

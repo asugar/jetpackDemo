@@ -38,6 +38,10 @@
         <action
             android:id="@+id/toLifeCycleFragment"
             app:destination="@id/LifeCycleFragment" />
+
+        <action
+            android:id="@+id/toEasyPermisionsFragment"
+            app:destination="@id/EasyPermisionsFragment" />
     </fragment>
 
     <!--room begin-->
@@ -154,6 +158,14 @@
         android:name="com.yi.jetpackDemo.lifecycle.LifeCycleFragment"
         android:label="LifeCycleFragment"
         tools:layout="@layout/fragment_lifecycle">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/EasyPermisionsFragment"
+        android:name="com.yi.jetpackDemo.easyPermisions.EasyPermisionsFragment"
+        android:label="EasyPermisionsFragment"
+        tools:layout="@layout/fragment_easy_permisions">
 
     </fragment>
 

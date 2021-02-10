@@ -56,6 +56,7 @@ class MainFragment : Fragment(), OnBannerListener<HomeBannerBean> {
         banner.addBannerLifecycleObserver(this)//添加生命周期观察者
             .setAdapter(HomeBannerAdapter(HomeBannerBean().getResImgs(), this))
             .setIndicator(indicator, false)
+        banner.currentItem = 4
     }
 
     override fun OnBannerClick(data: HomeBannerBean?, position: Int) {
@@ -72,6 +73,9 @@ class MainFragment : Fragment(), OnBannerListener<HomeBannerBean> {
                 }
                 HomeBannerJumpType.LIFE_CYCLE -> {
                     findNavController().navigate(R.id.toLifeCycleFragment)
+                }
+                HomeBannerJumpType.EASY_PERMISSIONS -> {
+                    findNavController().navigate(R.id.toEasyPermisionsFragment)
                 }
                 else -> {
                     Toast.makeText(context, dt.title, Toast.LENGTH_SHORT).show()
