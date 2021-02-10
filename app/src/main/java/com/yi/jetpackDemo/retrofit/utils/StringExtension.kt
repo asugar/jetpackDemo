@@ -1,6 +1,8 @@
 package com.yi.jetpackDemo.retrofit.utils
 
+import android.content.res.Resources
 import android.util.Base64
+import android.util.TypedValue
 import com.orhanobut.logger.Logger
 import com.yi.jetpackDemo.retrofit.RETROFIT_TAG
 import java.nio.charset.Charset
@@ -8,6 +10,16 @@ import java.security.MessageDigest
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 
+val Float.px2dp
+    get() = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        this,
+        Resources.getSystem().displayMetrics
+    )
+
+fun main(){
+    val a = 89F.px2dp
+}
 
 fun String.toMd5(): String {
     try {

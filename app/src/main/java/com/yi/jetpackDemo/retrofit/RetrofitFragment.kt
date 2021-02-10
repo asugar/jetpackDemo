@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.orhanobut.logger.Logger
@@ -19,6 +20,7 @@ import com.yi.jetpackDemo.retrofit.manager.ResultFunc
 import com.yi.jetpackDemo.retrofit.manager.RetrofitManager
 import com.yi.jetpackDemo.retrofit.manager.async
 import com.yi.jetpackDemo.retrofit.manager.exception.ResultException
+import com.yi.jetpackDemo.retrofit.utils.requestDataSources
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.nio.charset.Charset
@@ -28,6 +30,7 @@ const val RETROFIT_TAG = "RetrofitFragment"
 
 class RetrofitFragment : Fragment() {
 
+    private val mViewModel: RetrofitViewModel by viewModels()
     private var binding: FragmentRetrofitBinding? = null
     private val mService: RetrofitService by lazy {
         RetrofitManager.getRetrofit().create(RetrofitService::class.java)
@@ -39,6 +42,7 @@ class RetrofitFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRetrofitBinding.inflate(layoutInflater)
+        binding!!.lifecycleOwner = this
         return binding?.root
     }
 
@@ -48,6 +52,7 @@ class RetrofitFragment : Fragment() {
     }
 
     private fun initView() {
+        binding?.data = mViewModel
         binding?.btnNet?.setOnClickListener {
             mService.getAppIndexData("603", true)
                 .map(ResultFunc())
@@ -131,11 +136,26 @@ class RetrofitFragment : Fragment() {
             uploadLog()
         }
 
+        binding?.btnConcurrentNet?.setOnClickListener {
+            concurrentNet()
+        }
+
+    }
+
+    private fun concurrentNet() {
+        mViewModel.requestDataSources({
+            mService.getAppIndexData2("603")
+        }, {
+            Logger.t(RETROFIT_TAG).d("concurrentNet onSuccess $it ")
+            mViewModel.mAppIndexData.postValue(it.toString())
+        }, {
+            Logger.t(RETROFIT_TAG).d("concurrentNet onError $it ")
+            mViewModel.mAppIndexData.postValue(it)
+        })
     }
 
     /**
      * 测试日志上传
-     *
      */
     private fun uploadLog() {
         val url = "https://api-idata.aixuexi.com/collectWeb/app_log/save"

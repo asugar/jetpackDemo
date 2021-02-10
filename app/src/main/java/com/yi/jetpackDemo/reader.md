@@ -28,3 +28,15 @@ View->Tools Window->Profile
 
 
  adb shell dumpsys gfxinfo com.gaosi.masterapp
+ 
+ 
+ ## EasyPermissions 
+ 
+ 参考链接：https://github.com/googlesamples/easypermissions
+  
+ 
+ ## ContentProvider
+ 
+ 
+ ## 相册库得数据
+ 

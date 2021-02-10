@@ -74,4 +74,6 @@ gson解析后发现int -->Double 了，需要使用typeAdapter处理 -- ok
 自定义解析可以处理部分问题，但是解析规则不能时无线嵌套的
 
 
+# 增加kotlin协程+viewModel+liveData -- ok
+
 # OkHttpClient 原理

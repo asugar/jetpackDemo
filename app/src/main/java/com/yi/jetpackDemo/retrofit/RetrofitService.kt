@@ -63,6 +63,12 @@ interface RetrofitService {
         @Body body: String
     ): Observable<Result<Any>>
 
+    @GET("app/indexApp/getAppIndexData")
+    suspend fun getAppIndexData2(
+        @Query("insId") insId: String,
+        @Query(CACHE_QUERY) cache: Boolean = false
+    ): Result<AppIndexDataResp>
+
 //    @POST("/")
 //    fun login(@Body login: LoginReq): Observable<Result<LoginResp>>
 }
