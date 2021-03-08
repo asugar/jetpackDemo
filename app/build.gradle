@@ -3,7 +3,7 @@ apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'dellog'
+//apply plugin: 'dellog'
 //apply from: '../groovy_base.gradle'
 //apply from: '../prod.gradle'
 
@@ -190,6 +190,8 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp-urlconnection:$okhttp3_version") {
         exclude group: 'com.squareup.okhttp3'
     }
+    
+    implementation 'pub.devrel:easypermissions:3.0.0'
 
 }
 
@@ -211,9 +213,9 @@ def getLocalVersionName() {
 
 // 自定义plugin
 //dellogExtension.sourceDir = '/src'
-dellogExtension {
+//dellogExtension {
 //    sourceDir = '/src'
-}
+//}
 
 
 greendao {

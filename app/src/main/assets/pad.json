@@ -1,0 +1,272 @@
+[
+  {
+    "name": "switchUser.web.js",
+    "title": "切换用户",
+    "pad": "as303"
+  },
+  {
+    "name": "score.web.js",
+    "title": "成绩页",
+    "pad": "as405"
+  },
+  {
+    "title": "英语口语砸蛋页",
+    "pad": "as4050",
+    "name": "oralShowEgg.web.js"
+  },
+  {
+    "title": "英语口语结果页",
+    "pad": "as4051",
+    "name": "oralScore.web.js"
+  },
+  {
+    "title": "英语口语成绩页",
+    "pad": "as4052",
+    "name": "oralList.web.js"
+  },
+  {
+    "name": "classMessage",
+    "title": "老师说",
+    "pad": "as201"
+  },
+  {
+    "name": "extracting.web.js",
+    "title": "抽取装扮",
+    "pad": "as412"
+  },
+  {
+    "name": "dressSelf.web.js",
+    "title": "装扮自己",
+    "pad": "as413"
+  },
+  {
+    "name": "myclassList.web.js",
+    "title": "我的班级",
+    "pad": "as319"
+  },
+  {
+    "name": "zuoyeList.web.js",
+    "title": "作业列表",
+    "pad": "as320"
+  },
+  {
+    "name": "publicPopup.web.js",
+    "title": "弹窗",
+    "pad": "as501"
+  },
+  {
+    "name": "homeworkRank.web.js",
+    "title": "积分排行榜",
+    "pad": "as415"
+  },
+  {
+    "name": "thinkgoodMen.web.js",
+    "title": "点赞的人",
+    "pad": "as416"
+  },
+  {
+    "name": "dialog.web.js",
+    "title": "消息列表",
+    "pad": "as203"
+  },
+  {
+    "name": "myHead.web.js",
+    "title": "我的头像",
+    "pad": "as414"
+  },
+  {
+    "name": "correctReport.web.js",
+    "title": "解答题批改报告",
+    "pad": "as202"
+  },
+  {
+    "name": "about.web.js",
+    "title": "关于我们",
+    "pad": "as304"
+  },
+  {
+    "name": "goldStore.web.js",
+    "title": "金币商城",
+    "pad": "as311"
+  },
+  {
+    "name": "wrongSubject.web.js",
+    "title": "错题本",
+    "pad": "as408"
+  },
+  {
+    "name": "correctPro.web.js",
+    "title": "题目订正",
+    "pad": "as407"
+  },
+  {
+    "name": "wrongList.web.js",
+    "title": "错题列表",
+    "pad": "as409"
+  },
+  {
+  "name": "dtReport.web.js",
+  "title": "双师课堂报告",
+  "pad": "as204"
+},
+  {
+    "name": "ziping.web.js",
+    "title": "主观题自评",
+    "pad": "as410"
+  },
+  {
+    "name": "homeworkFantasy.web.js",
+    "title": "大乱斗分组信息",
+    "pad": "as411"
+  },
+  {
+    "title": "学情报告",
+    "pad": "as205",
+    "name": "learnReport.web.js"
+  },
+  {
+    "title": "学情报告子页",
+    "pad": "as421",
+    "name":"reportChild.web.js"
+  },
+  {
+    "title": "课堂表现报告报告",
+    "pad": "as4201",
+    "name": "lessonReport.web.js"
+  },
+  {
+    "name": "correction.web.js",
+    "title": "题目解析",
+    "pad": "as406"
+  },
+  {
+    "name": "lessonList.web.js",
+    "title": "班级讲次",
+    "pad": "as306"
+  },
+  {
+    "name": "classList.web.js",
+    "title": "我的班级",
+    "pad": "as305"
+  },
+  {
+    "name": "feedback.web.js",
+    "title": "帮助与反馈",
+    "pad": "as_feedback"
+  },
+  {
+    "name": "twentyOneReport.web.js",
+    "title": "21x学情报告",
+    "pad": "as_21x_report"
+  },
+  {
+    "name": "twentyOneChild.web.js",
+    "title": "21x学情报告作业报告",
+    "pad": "as_21x_report_homework"
+  },
+  {
+    "name": "reportChild.web.js",
+    "title": "21x学情报告课堂报告",
+    "pad": "as_21x_lesson_report"
+  },
+  {
+    "name": "homeActivityAlert.web.js",
+    "title": "首页活动弹框",
+    "pad": "as101001"
+  },
+  {
+    "name": "AiStudyReport.web.js",
+    "title": "情景对话学习报告",
+    "pad": "as603"
+  },
+  {
+    "name": "correctionQrcode.web.js",
+    "title": "扫码题目解析",
+    "pad": "as209"
+  },
+  {
+    "name": "myGold",
+    "title": "我的金币和积分",
+    "pad": "as312"
+  },
+  {
+    "name": "ExtractDressUp",
+    "title": "抽取装扮",
+    "pad": "as412"
+  },
+  {
+    "name": "QuestionIndex",
+    "title": "在线答疑提问列表页",
+    "pad": "XSD_386"
+  },
+  {
+    "name": "AskQuestion",
+    "title": "在线答疑提问页",
+    "pad": "XSD_391"
+  },
+  {
+    "name": "QuestionDetail",
+    "title": "在线答疑提问详情页",
+    "pad": "XSD_392"
+  },
+  {
+    "name": "RuleGold",
+    "title": "金币规则页面",
+    "pad": "XSD_524"
+  },
+  {
+    "name": "RuleDiamond",
+    "title": "钻石规则页面",
+    "pad": "XSD_523"
+  },
+  {
+    "name": "RuleScore",
+    "title": "积分规则页面",
+    "pad": "XSD_522"
+  },
+  {
+    "name": "englishPreview.web.js",
+    "title": "单词预习页面",
+    "pad": "XSD_603"
+  },
+  {
+    "name": "answersCard.web.js",
+    "title": "答题卡页面",
+    "pad": "as403"
+  },
+  {
+    "name": "axxStudyReport.web.js",
+    "title": "学习报告",
+    "pad": "XSD_670"
+  },
+  {
+    "name": "axxRespondDetail.web.js",
+    "title": "学习报告 答题轨迹",
+    "pad": "XSD_671"
+  },
+  {
+    "name": "axxQuestionAnalysis.web.js",
+    "title": "学习报告 题目详情",
+    "pad": "XSD_672"
+  },
+  {
+    "name": "closeAccount.web.js",
+    "title": "注销账号页",
+    "pad": "XSD_711"
+  },
+  {
+    "name": "raffle.web.js",
+    "title": "星耀计划 活动页",
+    "pad": "XSD_722"
+  },
+  {
+    "name": "enPicBookReadResult.web.js",
+    "title": "看绘本结果页",
+    "pad": "XSD_766"
+  },
+  {
+    "name": "enPicBookDubRanking.web.js",
+    "title": "配音结果页",
+    "pad": "XSD_767"
+  }
+]
