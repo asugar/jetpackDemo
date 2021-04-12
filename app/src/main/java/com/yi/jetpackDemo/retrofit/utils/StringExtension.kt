@@ -18,7 +18,19 @@ val Float.px2dp
     )
 
 fun main(){
-    val a = 89F.px2dp
+//    val a = 89F.px2dp
+//    val map = HashMap<Int,String>()
+//    map.put(1,"a")
+//    map.put(2,"a")
+//    map.setMultirate(map)
+//    println(map.size)
+    val l = (null as? String)?.length
+    println("$l")
+}
+
+fun HashMap<Int,String>.setMultirate(map:HashMap<Int, String>){
+    this.put(3,"c")
+    map.put(4,"d")
 }
 
 fun String.toMd5(): String {
