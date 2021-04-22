@@ -5,7 +5,7 @@ http://introtorx.com/Content/v1.0.10621.0/04_CreatingObservableSequences.html#Cr
 
 * create operator -- done 2021-4-21
 
-* transforming observalbes
+* transforming observables -- done 2021-4-22
 
 * Filtering Observables
 

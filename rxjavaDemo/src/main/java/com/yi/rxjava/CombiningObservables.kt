@@ -18,7 +18,7 @@ import kotlin.concurrent.thread
  * startWith
  * 在开始的地方添加一个itme
  */
-fun testStartWith() {
+private fun testStartWith() {
     val just = Observable.just("Android", "IOS")
     val subscribe = just.startWith("Go").subscribe { println("$it") }
 }
@@ -28,7 +28,7 @@ fun testStartWith() {
  * 合并多个Observables成一个序列
  * 合并多个观察者为一个
  */
-fun testMerge() {
+private fun testMerge() {
     Observable.just(1, 2, 3)
         .mergeWith(Observable.just(1))
         .mergeWith(object : SingleSource<Int> {
@@ -51,7 +51,7 @@ fun testMerge() {
  * mergeDelayError
  * 当所有的被观察者都发送之后，再单独发送error
  */
-fun testMergeDelayError() {
+private fun testMergeDelayError() {
     val observable1 = Observable.error<String>(IllegalArgumentException("self error"))
     val observable2 = Observable.just("first", "second", "third")
     Observable.mergeDelayError(observable1, observable2)
@@ -68,7 +68,7 @@ fun testMergeDelayError() {
  * zip是按照对应进行自定义处理，再发射出去
  * 是一对一的，如果有不对应的就会舍去
  */
-fun testZip() {
+private fun testZip() {
     val firsts = Observable.just("hello", "world", "test")
     val seconds = Observable.just("Android", "IOS")
     firsts.zipWith(seconds, object : BiFunction<String, String, String> {
@@ -88,7 +88,7 @@ fun testZip() {
  * combineLatest
  * 让最后一个组合，1A 2A 2B 3B 3C 4C
  */
-fun testCombineLatest() {
+private fun testCombineLatest() {
     val news = Observable.interval(100, TimeUnit.MILLISECONDS)
     val weathers = Observable.interval(50, TimeUnit.MILLISECONDS)
     Observable.combineLatest(news, weathers, object : BiFunction<Long, Long, String> {
@@ -105,7 +105,7 @@ fun testCombineLatest() {
  * switchOnNext
  * 不太理解，从一边切换到另一边
  */
-fun testSwitchOnNext() {
+private fun testSwitchOnNext() {
     val timeIntervals = Observable.interval(1, TimeUnit.SECONDS)
         .map(object : Function<Long, Observable<String>> {
             override fun apply(t: Long): Observable<String> {
@@ -125,7 +125,7 @@ fun testSwitchOnNext() {
  * and() then() when()
  * 有问题？？
  */
-fun testJoin() {
+private fun testJoin() {
     Observable.create<String> {
         it.onNext("hello")
         it.onComplete()

@@ -23,7 +23,7 @@ import kotlin.concurrent.thread
 /**
  * Creating Observables
  */
-fun testCreate() {
+private fun testCreate() {
 //    Observable.create<String> {
 //        it.onNext("first")
 //        it.onNext("second")
@@ -121,7 +121,7 @@ fun testCreate() {
 /**
  * 直到subscribes才去创建observable
  */
-fun testDefer() {
+private fun testDefer() {
     Observable.defer(object : Callable<ObservableSource<String>> {
         override fun call(): ObservableSource<String> {
             println("testDefer call")
