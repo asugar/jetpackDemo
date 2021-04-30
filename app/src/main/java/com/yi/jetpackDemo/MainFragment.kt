@@ -62,6 +62,9 @@ class MainFragment : Fragment(), OnBannerListener<HomeBannerBean> {
     override fun OnBannerClick(data: HomeBannerBean?, position: Int) {
         data?.let { dt ->
             when (dt.jumpType) {
+                HomeBannerJumpType.SERVICE -> {
+                    findNavController().navigate(R.id.toServiceFragment)
+                }
                 HomeBannerJumpType.SLIDING_CONFLICT -> {
                     findNavController().navigate(R.id.toSlidingConflictFragment)
                 }

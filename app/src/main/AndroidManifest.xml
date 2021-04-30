@@ -44,6 +44,13 @@
             android:name=".lunchModel.ActivityC2"
             android:finishOnTaskLaunch="false"
             android:taskAffinity="com.yi.little" />
+
+        <service
+            android:name=".service.MyService"
+            android:exported="true" />
+
+        <service android:name=".service.MyService2" />
+
     </application>
 
 </manifest>

@@ -24,6 +24,10 @@
             app:destination="@id/RoomFragment" />
 
         <action
+            android:id="@+id/toServiceFragment"
+            app:destination="@id/ServiceFragment" />
+
+        <action
             android:id="@+id/toSlidingConflictFragment"
             app:destination="@id/SlidingConflictFragment" />
 
@@ -166,6 +170,14 @@
         android:name="com.yi.jetpackDemo.easyPermisions.EasyPermisionsFragment"
         android:label="EasyPermisionsFragment"
         tools:layout="@layout/fragment_easy_permisions">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/ServiceFragment"
+        android:name="com.yi.jetpackDemo.service.ServiceFragment"
+        android:label="ServiceFragment"
+        tools:layout="@layout/fragment_service">
 
     </fragment>
 
