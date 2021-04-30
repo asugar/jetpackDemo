@@ -58,12 +58,12 @@ class ServiceFragment : Fragment(), ClientInterface {
             }
         }
 
-        binding?.btnBSBinder?.setOnClickListener {
+        binding?.btnBindService?.setOnClickListener {
             context?.let {
                 it.bindService(Intent(it, MyService::class.java), mConnection, BIND_AUTO_CREATE)
             }
         }
-        binding?.btnUBSBinder?.setOnClickListener {
+        binding?.btnUnbindService?.setOnClickListener {
             context?.let {
                 if (mBinder == null) {
                     Toast.makeText(it, "please bind first", Toast.LENGTH_SHORT).show()
@@ -72,17 +72,12 @@ class ServiceFragment : Fragment(), ClientInterface {
             }
         }
 
-//        binding?.btnBSMessenger?.setOnClickListener {
-//            context?.let {
-//                it.bindService()
-//            }
-//        }
     }
 
     private var mBinder: MyService.MyBinder? = null
     private var mServer: ServerInterface? = null
     private var mServiceMessenger: Messenger? = null
-    private val mClientHandler = object : Handler() {
+    private val mClientHandler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
             Logger.t(SERVICE_TAG).d("ServiceFragment handleMessage ${msg.what}")
         }

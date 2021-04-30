@@ -20,3 +20,6 @@ IntentService：内部使用HandlerThread+Handler，所以是依次执行，不�
 都可以实现双向通信
 Messenger和AIDL适用多进程；Binder单进程
 
+
+## 原理
+

@@ -37,7 +37,7 @@
             android:layout_marginTop="12dp"
             android:text="start_service"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/btnStopService"
+            app:layout_constraintRight_toRightOf="@+id/guideMid"
             app:layout_constraintTop_toBottomOf="@+id/guideTop" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="stop_service"
-            app:layout_constraintLeft_toRightOf="@id/guideMid"
+            app:layout_constraintLeft_toLeftOf="@id/guideMid"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideTop" />
 
@@ -67,7 +67,7 @@
                 android:id="@+id/flow"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:constraint_referenced_ids="btnBSBinder,btnUBSBinder,btnBSMessenger,btnUBSMessenger"
+                app:constraint_referenced_ids="btnBindService,btnUnbindService,btn,btn2,btn3,btn4,btn5,btn6"
                 app:flow_horizontalGap="0dp"
                 app:flow_maxElementsWrap="2"
                 app:flow_verticalGap="12dp"
@@ -77,31 +77,59 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btnBSBinder"
+                android:id="@+id/btnBindService"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="bind_service"
                 app:layout_constraintWidth_percent="0.4" />
 
             <Button
-                android:id="@+id/btnUBSBinder"
+                android:id="@+id/btnUnbindService"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="unbind_service"
                 app:layout_constraintWidth_percent="0.4" />
 
             <Button
-                android:id="@+id/btnBSMessenger"
+                android:id="@+id/btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="bsMessenger"
+                android:text="btn"
                 app:layout_constraintWidth_percent="0.4" />
 
             <Button
-                android:id="@+id/btnUBSMessenger"
+                android:id="@+id/btn2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="ubsMessenger"
+                android:text="btn2"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="btn2"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="btn2"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <Button
+                android:id="@+id/btn5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="btn2"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <Button
+                android:id="@+id/btn6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="btn2"
                 app:layout_constraintWidth_percent="0.4" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
