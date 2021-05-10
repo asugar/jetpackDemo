@@ -22,4 +22,6 @@ Messenger和AIDL适用多进程；Binder单进程
 
 
 ## 原理
+AIDL 接口里面有Stub，利用Proxy类
+底层使用的是binder通信
 

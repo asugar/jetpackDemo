@@ -13,4 +13,8 @@ interface IRemoteService {
 
 
     void registerClient(com.yi.jetpackDemo.service.IClient client);
+
+    void saveUser(in com.yi.jetpackDemo.service.User user);
+    void saveUser2(in Bundle bundle);
+
 }

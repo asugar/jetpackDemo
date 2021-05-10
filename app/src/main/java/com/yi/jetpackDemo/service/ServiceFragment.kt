@@ -116,6 +116,10 @@ class ServiceFragment : Fragment(), ClientInterface {
                     mRemoteService = IRemoteService.Stub.asInterface(service)
                     mRemoteService?.basicTypes(1, 1L, true, 1.0f, 1.toDouble(), "1")
                     mRemoteService?.registerClient(mClient)
+                    mRemoteService?.saveUser(User("xiaoyi", "hebi", "136"))
+                    val bundle = Bundle()
+                    bundle.putParcelable("user", User("xiaoyi2", "hebi2", "1362"))
+                    mRemoteService?.saveUser2(bundle)
                 }
             }
         }

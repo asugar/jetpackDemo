@@ -64,6 +64,15 @@ class MyService : Service(), ServerInterface {
             client?.sayHello("hello i am from service")
         }
 
+        override fun saveUser(user: User?) {
+            Logger.t(SERVICE_TAG).d("MyService aidl saveUser ${user?.name}")
+        }
+
+        override fun saveUser2(bundle: Bundle?) {
+            bundle?.classLoader = classLoader
+            val user = bundle?.getParcelable<User>("user")
+            Logger.t(SERVICE_TAG).d("MyService aidl saveUser2 ${user?.name}")
+        }
     }
 
     /**
