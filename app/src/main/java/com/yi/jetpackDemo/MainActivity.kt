@@ -1,5 +1,6 @@
 package com.yi.jetpackDemo
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Debug
 import android.view.Menu
@@ -21,6 +22,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         return super.onTouchEvent(event)
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        Logger.t("xiaoyi").d("MainActivity attachBaseContext")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

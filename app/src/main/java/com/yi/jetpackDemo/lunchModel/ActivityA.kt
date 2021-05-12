@@ -1,5 +1,6 @@
 package com.yi.jetpackDemo.lunchModel
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -23,6 +24,12 @@ class ActivityA : AppCompatActivity(), OnActivityClickListener {
     val KEY_STATE = "state"
     val KEY_VIEW = "view"
     var count: Int = 1
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        // 只有冷启才会执行一次
+        Logger.t("xiaoyi").d("ActivityA attachBaseContext")
+    }
 
     override fun onActivityClick(name: String) {
         Log.d(TAG_LAUNCH_MODEL, "ActivityA onActivityClick $name")
