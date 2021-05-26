@@ -28,8 +28,7 @@
         </activity>
         <activity
             android:name=".lunchModel.ActivityA"
-            android:launchMode="singleTask"
-            android:taskAffinity="com.yi.xiaoyi" />
+             />
         <activity
             android:name=".lunchModel.ActivityB"
             android:clearTaskOnLaunch="false"

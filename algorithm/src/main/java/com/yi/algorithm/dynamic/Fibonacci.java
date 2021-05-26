@@ -1,4 +1,4 @@
-package com.yi.algorithm;
+package com.yi.algorithm.dynamic;
 
 import java.util.HashMap;
 import java.util.Map;
