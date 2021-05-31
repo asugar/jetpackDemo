@@ -119,7 +119,7 @@ dependencies {
     implementation "androidx.work:work-gcm:$work_version"
 
     // 添加room持久库
-    def room_version = "2.2.5"
+    def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     // For Kotlin use kapt instead of annotationProcessor
