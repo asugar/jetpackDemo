@@ -1,6 +1,7 @@
 include ':algorithm'
 include ':patterns'
 include ':plugin'
+include ':diPlugin'
 include ':aspectjLib'
 include ':rxjavaDemo'
 include ':app'
