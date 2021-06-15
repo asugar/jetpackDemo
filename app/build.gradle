@@ -118,7 +118,7 @@ dependencies {
     // optional - RxJava2 support
     implementation "androidx.work:work-rxjava2:$work_version"
     // optional - GCMNetworkManager support
-    implementation "androidx.work:work-gcm:$work_version"
+//    implementation "androidx.work:work-gcm:$work_version"
 
     // 添加room持久库
     def room_version = "2.3.0"

@@ -1,4 +1,4 @@
-package com.yi.kotlin
+package com.yi.kotlin.类与对象
 
 /**
  *
@@ -19,7 +19,8 @@ interface B {
     fun b()
 }
 
-val ab: A = object : A(1), B {
+val ab: A = object : A(1),
+    B {
     override val y: Int
         get() = 6
 
@@ -67,7 +68,8 @@ class C {
  * 对象声明的初始化过程是线程安全的并且在首次访问时进行
  * 继承超类；实现接口
  */
-object DefaultListener : A(1), B {
+object DefaultListener : A(1),
+    B {
     override fun b() {
 
     }
@@ -80,14 +82,16 @@ object DefaultListener : A(1), B {
  * 注意伴生对象不一定是静态的，如果想成为静态方法和字段，需要使用@JvmStatic注解
  */
 class MyClass {
-    companion object Factory : A(1), B {
-        fun create(): MyClass = MyClass()
+    companion object Factory : A(1),
+        B {
+        fun create(): MyClass =
+            MyClass()
         override fun b() {
         }
     }
 }
 
-val x = MyClass.Factory
+val x = MyClass
 
 
 /**
