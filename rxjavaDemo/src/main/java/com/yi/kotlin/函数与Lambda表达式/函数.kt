@@ -29,7 +29,7 @@ infix fun Int.shl(x: Int): Int {
     return x
 }
 
-fun test() {
+private fun test() {
     // 两个写法一样效果
     1 shl 2
     1.shl(2)
