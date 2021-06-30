@@ -1,4 +1,4 @@
-package com.yi.di
+package com.yi.demo
 
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.api.ApkVariantOutput
@@ -23,6 +23,9 @@ public class DemoPlugin implements Plugin<Project> {
         }
 
         getBaseInfo()
+
+//        project.getExtensions().findByType(BaseExtension.class)
+//        .registerTransform(ne MyCu)
     }
 
     private void getBaseInfo() {

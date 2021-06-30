@@ -1,3 +1,13 @@
+# gradle学习
+一个插件工程里可以有多个插件定义 -- 好像不行
+上传一个aar到自己的私有库
+
+
+# transform API
+官方地址：https://google.github.io/android-gradle-dsl/javadoc/2.1/com/android/build/api/transform/Transform.html
+
+
+
 # 关于自定义gradle插件
 
 ### 创建步骤 

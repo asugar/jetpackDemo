@@ -1,0 +1,74 @@
+//构建脚本基础
+
+/**
+ * 任务定义
+ * ./gradlew -q hello
+ */
+task hello {
+    doLast {
+        println('hello world')
+    }
+
+    doFirst {
+        3.times {
+            print("$it")
+        }
+        String someThing = 'my_nAmE'
+        println("someThing= " + someThing.toUpperCase())
+    }
+}
+
+/**
+ * 任务依赖
+ * dependsOn
+ */
+task beforeCooking() {
+    doFirst {
+        println("before cooking")
+    }
+}
+task cooking(dependsOn: beforeCooking) {
+    doLast {
+        println("over cooking")
+    }
+}
+
+/**
+ * 自定义属性
+ * 使用ext
+ */
+task testExt() {
+    ext.myProperty = "myProperty"
+}
+task printExt() {
+    println(testExt.myProperty)
+}
+
+/**
+ * 定义默认任务
+ * 默认会执行的任务
+ * not work
+ */
+defaultTasks('clean2', 'run2')
+task clean2() {
+    doFirst {
+        println('clean2')
+    }
+}
+
+task run2() {
+    doLast {
+        println('run')
+    }
+}
+
+/**
+ * 跳过tasks
+ * 1）使用onlyIf 符合条件的时候跳过任务的执行
+ *  ./gradlew -q hello -PskipHello
+ *  2）StopExecutionException 抛出异常，停止这个动作及之后紧跟他的动作执行
+ *  3）使用enable flag 激活和注销tasks
+ */
+hello.onlyIf { !project.hasProperty('skipHello')}
+
+

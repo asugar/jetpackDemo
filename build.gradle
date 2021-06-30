@@ -42,12 +42,12 @@ buildscript {
     }
 
     repositories {
-        mavenCentral()
-        google()
-        jcenter()
         maven {
             url uri("./repo")
         }
+        mavenCentral()
+        google()
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.1'
@@ -56,12 +56,17 @@ buildscript {
         classpath 'org.aspectj:aspectjweaver:1.9.6'
 //        classpath 'com.yi.plugin:dellog:2.0.0'
         classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0' // add greendao plugin
+        // 自定义插件
         classpath 'com.yi.di:diplugin:1.0.0'
+        classpath 'com.yi.demo:demoplugin:1.0.0'
     }
 }
 
 allprojects {
     repositories {
+        maven {
+            url uri("./repo")
+        }
         mavenCentral()
         google()
         jcenter()

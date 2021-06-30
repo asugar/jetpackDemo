@@ -23,7 +23,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":app")
-    implementation 'androidx.core:core-ktx:$core_ktx'
+    implementation "androidx.core:core-ktx:$core_ktx"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     androidTestImplementation 'androidx.annotation:annotation:1.1.0'
 

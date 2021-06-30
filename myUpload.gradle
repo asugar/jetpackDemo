@@ -1,0 +1,47 @@
+import java.util.function.Consumer
+
+/**
+ * 使用maven上传第三方aar包
+ */
+apply plugin: 'maven'
+
+artifacts {
+    // 指定要上传的第三方aar文件
+    archives file('libs/transvod-11.4.2.3.union-SNAPSHOT.aar')
+    println("artifacts ---- begin")
+
+    uploadArchives.getArtifacts().forEach(new Consumer<File>() {
+        @Override
+        void accept(File file) {
+            println("${file.name}")
+        }
+    })
+    uploadArchives.getDependsOn().forEach(new Consumer<Object>() {
+        @Override
+        void accept(Object o) {
+            println("${o.class.name}")
+        }
+    })
+    println("artifacts ---- end")
+}
+
+// 使用maven插件上传
+uploadArchives {
+    repositories.mavenDeployer {
+        println("start upload aar ")
+        // 配置仓库地址
+//        repository(url: uri('http://maven.mbd.baidu.com:8666/repository/searchbox-snapshot/')){
+//            authentication(userName: "wanghuayi", password: "f8b097418d1755101479902acd88faef")
+//        }
+        repository(url: "file:///$rootDir/repo")
+        // groupid:artifactid:version构成aar唯一标识，不可和其他aar重复
+        pom.groupId = "com.yy.transvod"
+        pom.artifactId = "transvod"
+        pom.version = "11.4.2.3.union-SNAPSHOT"
+        // 去掉对其他包的依赖
+        pom*.whenConfigured { pom -> pom.dependencies.clear() }
+        doLast {
+            println "upload aar success "
+        }
+    }
+}
